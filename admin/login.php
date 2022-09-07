@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="bg-front" style="background: #a40104">
+<body class="bg-gradient-primary">
 
     <div class="container" style="margin-top: 7%;">
 
@@ -37,8 +37,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                         
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image" 
-                                style="background-image:url(img/fire-station.jpg); background-position: 54%;">
+                            <div class="col-lg-6 d-none d-lg-block bg-gradient-primary">
                               <img src="img/bfp.png" alt=""
                                 style="width: 35%; margin-left: auto; margin-right: auto; display: block; margin-top: 29%;" >
                               <p 
@@ -68,7 +67,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-user btn-block" style="background: #efa830">
+                                        <a href="index.php" class="btn btn-user btn-primary btn-block">
                                             Login
                                         </a>
                                     </form>

@@ -74,12 +74,6 @@
 
             <li class="nav-item">
                 <a class="nav-link" href="blank.php">
-                    <i class="fas fa-question"></i>
-                    <span>Inquiries</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="blank.php">
                     <i class="fas fa-comments"></i>
                     <span>Messages</span></a>
             </li>
@@ -107,6 +101,12 @@
                         <a class="collapse-item" href="utilities-other.php">Other</a>
                     </div>
                 </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="blank.php">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Staff</span></a>
             </li>
 
             <li class="nav-item">
