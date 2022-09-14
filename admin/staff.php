@@ -1,3 +1,7 @@
+<?php 
+include "db_view.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -395,18 +399,25 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                 <?php if (isset($_GET['success'])) { ?>
+		          <div class="alert alert-success" role="alert">
+			         <?php echo $_GET['success']; ?>
+		          </div>
+		         <?php } ?>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                           <div class="pull-left m-0 font-weight-bold text-primary"> Users
-                          <a href="add_user.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary">Add New User</button></a>
-                          </div>
+                          <a href="staff-create.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary">Add New User</button></a>
+                        </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                                <?php if (mysqli_num_rows($result)) { ?>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>No.</th>
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Contact</th>
@@ -414,7 +425,30 @@
                                             <th>Action</th>
                                         </tr>
                                     </thead>
+                                    <tbody>
+                                     <?php 
+			  	                       $i = 0;
+			  	                       while($rows = mysqli_fetch_assoc($result)){
+			  	                       $i++;
+			  	                     ?>
+			                         <tr>
+			                             <th scope="row"><?=$i?></th>
+			                             <td><?=$rows['name']?></td>
+			                             <td><?php echo $rows['email']; ?></td>
+                                         <td><?php echo $rows['contact']; ?></td>
+                                         <td><?php echo $rows['role']; ?></td>
+			                             <td><a href="staff-edit.php?id=<?=$rows['id']?>" 
+			      	                         class="btn btn-success"><i class="fas fa-pen-square"></i></a>
+			      	                         <a href="php/delete.php?id=<?=$rows['id']?>" 
+			      	                         class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+			                             </td>
+			                         </tr>
+			                         <?php } ?>
+                                      
+                                    </tbody>
+                                
                                 </table>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
