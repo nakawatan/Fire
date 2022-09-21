@@ -1,6 +1,29 @@
-<?php 
- include 'header.php';
-?>
+<?php include 'db_edit.php'; ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BFP R4A Mabini</title>
+    <link rel="icon" type="img/png" sizes="16x16" href="img/bfp.png">
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -371,6 +394,11 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <?php if (isset($_GET['error'])) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $_GET['error']; ?>
+                    </div>
+                    <?php } ?>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -386,13 +414,13 @@
                             <div class="card-body">
                                 <center class="m-t-30">
                                     <img src="http://localhost/BFP/assets/images/users/userav-min.png" class="img-circle" width="150" />
-                                    <h4 class="card-title m-t-10">Thom Anderson</h4>
+                                    <h4 class="card-title m-t-10"><?=$row['name'] ?></h4>
                                     <h6 class="card-subtitle"></h6>
                                 </center>
                             </div>
                             <div> <hr> </div>
                             <div class="card-body"> <small class="text-muted">Email address </small>
-                                <h6>thoma@mail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
+                                <h6></h6> <small class="text-muted p-t-30 db">Phone</small>
                                 <h6>7856587870</h6> 
                                 <small class="text-muted p-t-30 db">Social Profile</small>
                                 <br/>
@@ -407,15 +435,15 @@
                             <form class="row" method="post" action="db_edit.php" enctype="multipart/form-data">
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Name</label>
-                                    <input type="text" name="name" value="" class="form-control form-control-line" placeholder="Employee's Name" minlength="2" required > 
+                                    <input type="text" name="name" value="<?=$row['name'] ?>"class="form-control form-control-line" placeholder="Employee's Name" minlength="2" required > 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Employee Code </label>
-                                    <input type="text" name="em_code" class="form-control form-control-line" placeholder="Example: 8820"> 
+                                    <input type="text" name="em_code" value="<?=$row['em_code'] ?>"class="form-control form-control-line" placeholder="Example: 8820"> 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Department</label>
-                                    <select name="department" class="form-control custom-select" required>
+                                    <select name="department" value="<?=$row['department'] ?>" class="form-control custom-select" required>
                                         <option>Select Department</option>
                                         <option value="2">Administration</option>
                                         <option value="3">Finance, HR, & Admininstration</option>
@@ -430,7 +458,7 @@
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Role </label>
-                                    <select name="role" class="form-control custom-select" required>
+                                    <select name="role" value="<?=$row['role'] ?>"class="form-control custom-select" required>
                                         <option>Select Role</option>
                                         <option value="ADMIN">ADMIN</option>
                                         <option value="EMPLOYEE">Employee</option>
@@ -439,7 +467,7 @@
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Gender </label>
-                                    <select name="gender" class="form-control custom-select" required>
+                                    <select name="gender" value="<?=$row['gender'] ?>"class="form-control custom-select" required>
                                         <option>Select Gender</option>
                                         <option value="MALE">Male</option>
                                         <option value="FEMALE">Female</option>
@@ -447,31 +475,27 @@
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Contact Number </label>
-                                    <input type="text" name="contact" class="form-control" value="" placeholder="+63" minlength="12" maxlength="15" required> 
+                                    <input type="text" name="contact" class="form-control" value="<?=$row['contact'] ?>" placeholder="+63" minlength="12" maxlength="15" required> 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Date Of Birth </label>
-                                    <input type="date" name="date_birth" id="example-email2" name="example-email" class="form-control" placeholder="" required> 
+                                    <input type="date" name="date_birth" id="example-email2" value="<?=$row['date_birth'] ?>" class="form-control" placeholder="" required> 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
-                                    <label>Date Of Joining </label>
-                                    <input type="date" name="date_joining" id="example-email2" name="example-email" class="form-control" placeholder=""> 
+                                    <label>Address </label>
+                                    <input type="text" name="address" id="example-email2" value="<?=$row['address'] ?>" class="form-control" placeholder=""> 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Username </label>
-                                    <input type="text" name="username" class="form-control form-control-line" value="" placeholder="Username"> 
+                                    <input type="text" name="username" class="form-control form-control-line" value="<?=$row['username'] ?>" placeholder="Username"> 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Email </label>
-                                    <input type="email" id="example-email2" name="email" class="form-control" placeholder="email@mail.com" minlength="7" required > 
+                                    <input type="email" id="example-email2" name="email" value="<?=$row['email'] ?>"class="form-control" placeholder="email@mail.com" minlength="7" required > 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Password </label>
-                                    <input type="text" name="password" class="form-control" value="" placeholder="**********"> 
-                                </div>
-                                <div class="form-group col-md-3 m-t-20">
-                                    <label>Confirm Password </label>
-                                    <input type="text" name="password" class="form-control" value="" placeholder="**********"> 
+                                    <input type="text" name="password" class="form-control" value="<?=$row['password'] ?>" placeholder="**********"> 
                                 </div>
 				                <div class="form-group col-md-12 m-t-10">
                                     <img src="http://localhost/BFP/assets/images/users/userav-min.png" class="img-circle" width="150" />

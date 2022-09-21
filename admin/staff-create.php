@@ -451,8 +451,8 @@
                                         <input type="date" name="date_birth" id="example-email2" name="example-email" class="form-control" placeholder="" required> 
                                     </div>
                                     <div class="form-group col-md-3 m-t-20">
-                                        <label>Date Of Joining </label>
-                                        <input type="date" name="date_joining" id="example-email2" name="example-email" class="form-control" placeholder=""> 
+                                        <label>Address</label>
+                                        <input type="text" name="address" id="example-email2" name="example-email" class="form-control" placeholder=""> 
                                     </div>
                                     <div class="form-group col-md-3 m-t-20">
                                         <label>Username </label>
