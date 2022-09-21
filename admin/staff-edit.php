@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
 include 'db/db_con.php';
 $id = $_GET['updateid'];
@@ -46,10 +45,6 @@ if (isset($_POST['update'])) {
 }
 ?>
 
-
-=======
-<?php include 'db_edit.php'; ?>
->>>>>>> d9ee356f851342275bdb49740a3f05482bede971
 
 <!DOCTYPE html>
 <html lang="en">
@@ -465,11 +460,7 @@ if (isset($_POST['update'])) {
                             <div class="card-body">
                                 <center class="m-t-30">
                                     <img src="http://localhost/BFP/assets/images/users/userav-min.png" class="img-circle" width="150" />
-<<<<<<< HEAD
                                     <h4 class="card-title m-t-10"><?php echo $name; ?></h4>
-=======
-                                    <h4 class="card-title m-t-10"><?=$row['name'] ?></h4>
->>>>>>> d9ee356f851342275bdb49740a3f05482bede971
                                     <h6 class="card-subtitle"></h6>
                                 </center>
                             </div>
@@ -490,7 +481,6 @@ if (isset($_POST['update'])) {
                             <form class="row" method="post" enctype="multipart/form-data">
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Name</label>
-<<<<<<< HEAD
                                     <input type="text" name="name" value="<?php echo $name; ?>" class="form-control form-control-line" placeholder="Employee's Name" minlength="2" required > 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
@@ -500,18 +490,7 @@ if (isset($_POST['update'])) {
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Department</label>
                                     <select name="department" value="<?php echo $dept; ?>" class="form-control custom-select" required>
-=======
-                                    <input type="text" name="name" value="<?=$row['name'] ?>"class="form-control form-control-line" placeholder="Employee's Name" minlength="2" required > 
-                                </div>
-                                <div class="form-group col-md-3 m-t-20">
-                                    <label>Employee Code </label>
-                                    <input type="text" name="em_code" value="<?=$row['em_code'] ?>"class="form-control form-control-line" placeholder="Example: 8820"> 
-                                </div>
-                                <div class="form-group col-md-3 m-t-20">
-                                    <label>Department</label>
-                                    <select name="department" value="<?=$row['department'] ?>" class="form-control custom-select" required>
->>>>>>> d9ee356f851342275bdb49740a3f05482bede971
-                                        <option>Select Department</option>
+                                        <option value="<?php echo $dept; ?>">Select Department</option>
                                         <option value="2">Administration</option>
                                         <option value="3">Finance, HR, & Admininstration</option>
                                         <option value="4">Research</option>
@@ -525,11 +504,7 @@ if (isset($_POST['update'])) {
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Role </label>
-<<<<<<< HEAD
                                     <select name="role" value="<?php echo $role; ?>" class="form-control custom-select" required>
-=======
-                                    <select name="role" value="<?=$row['role'] ?>"class="form-control custom-select" required>
->>>>>>> d9ee356f851342275bdb49740a3f05482bede971
                                         <option>Select Role</option>
                                         <option value="ADMIN">ADMIN</option>
                                         <option value="EMPLOYEE">Employee</option>
@@ -538,11 +513,7 @@ if (isset($_POST['update'])) {
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Gender </label>
-<<<<<<< HEAD
                                     <select name="gender" value="<?php echo $gder; ?>" class="form-control custom-select" required>
-=======
-                                    <select name="gender" value="<?=$row['gender'] ?>"class="form-control custom-select" required>
->>>>>>> d9ee356f851342275bdb49740a3f05482bede971
                                         <option>Select Gender</option>
                                         <option value="MALE">Male</option>
                                         <option value="FEMALE">Female</option>
@@ -550,12 +521,11 @@ if (isset($_POST['update'])) {
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Contact Number </label>
-<<<<<<< HEAD
                                     <input type="text" name="contact" value="<?php echo $cont; ?>" class="form-control" placeholder="+63" minlength="12" maxlength="15" required> 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Date Of Birth </label>
-                                    <input type="date" name="date_birth" value="<?php echo $bd; ?>" class="form-control" placeholder="" required> 
+                                    <input type="date" name="date_birth" id="example-email2"value="<?php echo $bd; ?>" class="form-control" placeholder="" required> 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Address </label>
@@ -572,29 +542,6 @@ if (isset($_POST['update'])) {
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Password </label>
                                     <input type="text" name="password" value="<?php echo $pass; ?>" class="form-control" placeholder="**********"> 
-=======
-                                    <input type="text" name="contact" class="form-control" value="<?=$row['contact'] ?>" placeholder="+63" minlength="12" maxlength="15" required> 
-                                </div>
-                                <div class="form-group col-md-3 m-t-20">
-                                    <label>Date Of Birth </label>
-                                    <input type="date" name="date_birth" id="example-email2" value="<?=$row['date_birth'] ?>" class="form-control" placeholder="" required> 
-                                </div>
-                                <div class="form-group col-md-3 m-t-20">
-                                    <label>Address </label>
-                                    <input type="text" name="address" id="example-email2" value="<?=$row['address'] ?>" class="form-control" placeholder=""> 
-                                </div>
-                                <div class="form-group col-md-3 m-t-20">
-                                    <label>Username </label>
-                                    <input type="text" name="username" class="form-control form-control-line" value="<?=$row['username'] ?>" placeholder="Username"> 
-                                </div>
-                                <div class="form-group col-md-3 m-t-20">
-                                    <label>Email </label>
-                                    <input type="email" id="example-email2" name="email" value="<?=$row['email'] ?>"class="form-control" placeholder="email@mail.com" minlength="7" required > 
-                                </div>
-                                <div class="form-group col-md-3 m-t-20">
-                                    <label>Password </label>
-                                    <input type="text" name="password" class="form-control" value="<?=$row['password'] ?>" placeholder="**********"> 
->>>>>>> d9ee356f851342275bdb49740a3f05482bede971
                                 </div>
 				                <div class="form-group col-md-12 m-t-10">
                                     <img src="http://localhost/BFP/assets/images/users/userav-min.png" class="img-circle" width="150" />
