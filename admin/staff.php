@@ -1,5 +1,6 @@
 <?php 
-include "db_view.php";
+include "db/db_con.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -399,11 +400,6 @@ include "db_view.php";
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                 <?php if (isset($_GET['success'])) { ?>
-		          <div class="alert alert-success" role="alert">
-			         <?php echo $_GET['success']; ?>
-		          </div>
-		         <?php } ?>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -413,7 +409,6 @@ include "db_view.php";
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <?php if (mysqli_num_rows($result)) { ?>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -426,77 +421,44 @@ include "db_view.php";
                                         </tr>
                                     </thead>
                                     <tbody>
-                                     <?php 
-			  	                       $i = 0;
-			  	                       while($rows = mysqli_fetch_assoc($result)){
-			  	                       $i++;
-			  	                     ?>
-			                         <tr>
-			                             <th scope="row"><?=$i?></th>
-			                             <td><?=$rows['name']?></td>
-			                             <td><?php echo $rows['email']; ?></td>
-                                         <td><?php echo $rows['contact']; ?></td>
-                                         <td><?php echo $rows['role']; ?></td>
-			                             <td><a href="staff-edit.php?id=<?=$rows['id']?>" 
-			      	                         class="btn btn-success"><i class="fas fa-pen-square"></i></a>
-			      	                         <a href="php/delete.php?id=<?=$rows['id']?>" 
-			      	                         class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-			                             </td>
-			                         </tr>
-			                         <?php } ?>
-                                      
+                                        <?php
+                                        $sql = "SELECT * FROM staff ORDER BY id DESC";
+                                        $result = mysqli_query($con,$sql);
+                                        if ($result) {
+                                            $i = 0;
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                            $i++;
+                                                $id=$row['id'];
+                                                $name=$row['name'];
+                                                $email=$row['email'];
+                                                $cont=$row['contact'];
+                                                $role=$row['role'];
+                                                echo '<tr>
+                                                <th scope="row">'.$id.'</th>
+                                                <td>'.$name.'</td>
+                                                <td>'.$email.'</td>
+                                                <td>'.$cont.'</td>
+                                                <td>'.$role.'</td>
+                                                <td><a href="staff-edit.php?updateid='.$id.'" 
+                                                    class="btn btn-success"><i class="fas fa-pen-square"></i></a>
+                                                    <a href="staff-delete.php?deleteid='.$id.'" 
+                                                    class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                </td>
+                                                </tr>';
+                                            }
+                                        }
+
+                                        ?>
+                                     
                                     </tbody>
                                 
                                 </table>
-                                <?php } ?>
+                               
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- /.container-fluid -->
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                   <div class="modal-dialog" role="document">
-                       <div class="modal-content">
-                           <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                   <span aria-hidden="true">&times;</span>
-                                </button>
-                           </div>
-                           <div class="modal-body">
-                               <form>
-                                  <div class="mb-3">
-                                      <label for="exampleInputEmail1" class="form-label">Full Name</label>
-                                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                  </div>
-                                  <div class="mb-3">
-                                      <label for="exampleInputEmail1" class="form-label">Email</label>
-                                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                  </div>
-                                  <div class="mb-3">
-                                      <label for="exampleInputEmail1" class="form-label">Contact</label>
-                                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                  </div>
-                                  <div class="mb-3">
-                                      <label for="exampleInputEmail1" class="form-label">User Type</label>
-                                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                  </div>
-                                  <div class="mb-3">
-                                      <label for="exampleInputPassword1" class="form-label">Password</label>
-                                      <input type="password" class="form-control" id="exampleInputPassword1">
-                                  </div>                                
-                               </form>
-                           </div>
-                           <div class="modal-footer">
-                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                               <button type="button" class="btn btn-primary">Save</button>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-                
-
             </div>
             <!-- End of Main Content -->
 
