@@ -17,18 +17,18 @@ if (isset($_POST['create'])) {
     $gender = validate($_POST['gender']);
     $contact = validate($_POST['contact']);
     $dob = validate($_POST['date_birth']);
-    $joindate = validate($_POST['date_joining']);
+    $address = validate($_POST['address']);
     $username = validate($_POST['username']);
     $email = validate($_POST['email']);
     $password = validate($_POST['password']);
-    $image = validate($_POST['image']);
+    
 
 	$user_data = 'name='.$name. 'em_code='.$eid. 'department='.$dept. 'role='.$role. 
-    'gender='.$gender. 'contact='.$contact. 'date_birth='.$dob. 'date_joining='.$joindate. 'username='.$username. 'email='.$email.
-    'password='.$password. 'image='.$image;
+    'gender='.$gender. 'contact='.$contact. 'date_birth='.$dob. 'address='.$address. 'username='.$username. 'email='.$email.
+    'password='.$password;
 
-       $sql = "INSERT INTO `staff` (`name`, `em_code`, `department`, `role`, `gender`, `contact`, `date_birth`, `date_joining`, `username`, `email`, `password`, `image`) 
-               VALUES ('$name', '$eid', '$dept', '$role', '$gender', '$contact', '$dob', '$joindate', '$username', '$email', '$password', '$image')";
+       $sql = "INSERT INTO `staff` (`name`, `em_code`, `department`, `role`, `gender`, `contact`, `date_birth`, `address`, `username`, `email`, `password`) 
+               VALUES ('$name', '$eid', '$dept', '$role', '$gender', '$contact', '$dob', 'address', '$username', '$email', '$password')";
        $result = mysqli_query($con, $sql);
        if ($result) {
        	  header("Location: staff.php?success=successfully created");
