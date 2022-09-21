@@ -466,8 +466,8 @@ if (isset($_POST['update'])) {
                             </div>
                             <div> <hr> </div>
                             <div class="card-body"> <small class="text-muted">Email address </small>
-                                <h6></h6> <small class="text-muted p-t-30 db">Phone</small>
-                                <h6>7856587870</h6> 
+                                <h6><?php echo $email; ?></h6> <small class="text-muted p-t-30 db">Phone</small>
+                                <h6><?php echo $cont; ?></h6> 
                                 <small class="text-muted p-t-30 db">Social Profile</small>
                                 <br/>
                                 <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -489,23 +489,23 @@ if (isset($_POST['update'])) {
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Department</label>
-                                    <select name="department" value="<?php echo $dept; ?>" class="form-control custom-select" required>
-                                        <option value="<?php echo $dept; ?>">Select Department</option>
-                                        <option value="2">Administration</option>
-                                        <option value="3">Finance, HR, & Admininstration</option>
-                                        <option value="4">Research</option>
-                                        <option value="5">Information Technology</option>
-                                        <option value="6">Support</option>
-                                        <option value="7">Network Engineering</option>
-                                        <option value="8">Sales and Marketing</option>
-                                        <option value="9">Helpdesk</option>
-                                        <option value="10">Project Management</option>
+                                    <select name="department" class="form-control custom-select" required>
+                                        <option><?php echo $dept; ?></option>
+                                        <option value="Administration">Administration</option>
+                                        <option value="Finance, HR, & Admininstration">Finance, HR, & Admininstration</option>
+                                        <option value="Research">Research</option>
+                                        <option value="Information Technology">Information Technology</option>
+                                        <option value="Support">Support</option>
+                                        <option value="Network Engineering">Network Engineering</option>
+                                        <option value="Sales and Marketing">Sales and Marketing</option>
+                                        <option value="Helpdesk">Helpdesk</option>
+                                        <option value="Project Management">Project Management</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Role </label>
-                                    <select name="role" value="<?php echo $role; ?>" class="form-control custom-select" required>
-                                        <option>Select Role</option>
+                                    <select name="role" class="form-control custom-select" required>
+                                        <option><?php echo $role; ?></option>
                                         <option value="ADMIN">ADMIN</option>
                                         <option value="EMPLOYEE">Employee</option>
                                         <option value="SUPER ADMIN">Super Admin</option>
@@ -513,8 +513,8 @@ if (isset($_POST['update'])) {
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Gender </label>
-                                    <select name="gender" value="<?php echo $gder; ?>" class="form-control custom-select" required>
-                                        <option>Select Gender</option>
+                                    <select name="gender" class="form-control custom-select" required>
+                                        <option><?php echo $gder; ?></option>
                                         <option value="MALE">Male</option>
                                         <option value="FEMALE">Female</option>
                                     </select>
@@ -525,7 +525,7 @@ if (isset($_POST['update'])) {
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Date Of Birth </label>
-                                    <input type="date" name="date_birth" id="example-email2"value="<?php echo $bd; ?>" class="form-control" placeholder="" required> 
+                                    <input type="date" name="date_birth" class="form-control" value="<?php echo $bd; ?>" placeholder="" required> 
                                 </div>
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Address </label>
