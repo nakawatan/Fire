@@ -9,7 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>BFP R4A Mabini</title>
+    <link rel="icon" type="img/png" sizes="16x16" href="img/bfp.png">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -50,15 +51,19 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+
+                                    <?php if (isset($_GET['error'])) { ?>
+	  		                          <div class="alert alert-danger" role="alert">
+			                             <?=htmlspecialchars($_GET['error'])?>
+			                          </div>
+		                            <?php } ?>
+
+                                    <form class="user" action="db_login.php" method="post">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                            <input type="email" class="form-control form-control-user" name="email" placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -67,9 +72,7 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.php" class="btn btn-user btn-primary btn-block">
-                                            Login
-                                        </a>
+                                        <button class="btn btn-user btn-primary btn-block" >Login</button>
                                     </form>
                                 </div>
                             </div>

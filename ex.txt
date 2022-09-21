@@ -1,0 +1,99 @@
+index.php
+<?php 
+session_start();
+
+if (isset($_SESSION['email']) && isset($_SESSION['password'])) { 
+
+?>
+
+
+<?php 
+}else {
+   header("Location: login.php");
+}
+?>
+
+.........................................................................
+logout.php
+
+<?php
+session_start();
+
+session_unset();
+session_destroy();
+
+header("Location: login.php");
+
+
+........................................................
+
+db_login.php
+<?php 
+session_start();
+include "db/db_con.php";
+
+if (isset($_POST['email']) && isset($_POST['password'])) {
+
+    function validate($data){
+        $data = trim($data);
+        $data = stripcslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+    $email = validate($_POST['email']);
+	$password = validate($_POST['password']);
+
+    if (empty($email)) {
+		header("Location: login.php?error=Email is required");
+        exit();
+	}else if (empty($password)){
+		header("Location: login.php?error=Password is required");
+        exit();
+    }else{
+        $sql = "SELECT * FROM `staff` WHERE email='$email' AND password='$password'";
+
+        $result =mysqli_query($con, $sql);
+
+        if (mysqli_num_rows($result) === 1) {
+            $row = mysqli_fetch_assoc($result);
+            if ($row['email'] === $email && $row['password'] === $password) {
+                $_SESSION['email'] = $email;
+                $_SESSION['password'] = $password;
+				header("Location: index.php");
+                exit();
+              
+            }else{
+            header("Location: login.php?error=Incorect Email or Password");
+            exit();
+            }
+
+        }else{
+            header("Location: login.php?error=Incorect Email or Password");
+            exit();
+        }
+    }
+	
+}else {
+    header("Location: login.php");
+    exit();
+}
+
+
+...........................................................................
+db_con.php
+
+<?php
+$con = mysqli_connect("localhost","root","","bfp");
+
+if (!$con) {
+  echo "hello";
+}
+
+............................................................................
+login.php
+ <?php if (isset($_GET['error'])) { ?>
+	  		                          <div class="alert alert-danger" role="alert">
+			                             <?=htmlspecialchars($_GET['error'])?>
+			                          </div>
+		                            <?php } ?>

@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Border Utilities</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-</head>
-
+<?php 
+ include 'header.php';
+?>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -31,11 +10,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+                <div class="sidebar-brand-icon">
+                 <img src="img/bfp.png" alt=""style="width: 55%;" >
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">BFP <sup>MABINI</sup></div>
             </a>
 
             <!-- Divider -->
@@ -43,7 +22,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -60,33 +39,66 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <i class="fas fa-folder"></i>
+                    <span>Records</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" href="buttons.php">Buttons</a>
+                        <a class="collapse-item" href="cards.php">Cards</a>
                     </div>
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="blank.php">
+                    <i class="fas fa-comments"></i>
+                    <span>Messages</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="blank.php">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Announcement</span></a>
+            </li>
+
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <i class="fas fa-database"></i>
+                    <span>Monitoring of Request</span>
                 </a>
-                <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item active" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <a class="collapse-item" href="utilities-color.php">Colors</a>
+                        <a class="collapse-item" href="utilities-border.php">Borders</a>
+                        <a class="collapse-item" href="utilities-animation.php">Animations</a>
+                        <a class="collapse-item" href="utilities-other.php">Other</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="blank.php">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Staff</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" href="buttons.php">Buttons</a>
+                        <a class="collapse-item" href="cards.php">Cards</a>
                     </div>
                 </div>
             </li>
@@ -109,27 +121,27 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <a class="collapse-item" href="login.php">Login</a>
+                        <a class="collapse-item" href="register.php">Register</a>
+                        <a class="collapse-item" href="forgot-password.php">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <a class="collapse-item" href="404.php">404 Page</a>
+                        <a class="collapse-item" href="blank.php">Blank Page</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="charts.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+            <li class="nav-item active">
+                <a class="nav-link" href="tables.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
@@ -155,9 +167,11 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </form>
 
                     <!-- Topbar Search -->
                     <form
@@ -357,116 +371,123 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800">Border Utilities</h1>
-                    <p class="mb-4">Bootstrap's default utility classes can be found on the official <a
-                            href="https://getbootstrap.com/docs">Bootstrap Documentation</a> page. The custom utilities
-                        below were created to extend this theme past the default utility classes built into Bootstrap's
-                        framework.</p>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Border Left Utilities -->
-                        <div class="col-lg-6">
-
-                            <div class="card mb-4 py-3 border-left-primary">
-                                <div class="card-body">
-                                    .border-left-primary
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-secondary">
-                                <div class="card-body">
-                                    .border-left-secondary
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-success">
-                                <div class="card-body">
-                                    .border-left-success
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-info">
-                                <div class="card-body">
-                                    .border-left-info
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-warning">
-                                <div class="card-body">
-                                    .border-left-warning
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-danger">
-                                <div class="card-body">
-                                    .border-left-danger
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-left-dark">
-                                <div class="card-body">
-                                    .border-left-dark
-                                </div>
-                            </div>
-
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          <div class="pull-left m-0 font-weight-bold text-primary"> Add New User</div>
                         </div>
-
-                        <!-- Border Bottom Utilities -->
-                        <div class="col-lg-6">
-
-                            <div class="card mb-4 py-3 border-bottom-primary">
-                                <div class="card-body">
-                                    .border-bottom-primary
-                                </div>
+                        <div class="tab-content">
+                                <div class="tab-pane active" id="home" role="tabpanel">
+                                    <div class="card">
+				                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <center class="m-t-30">
+                                    <img src="http://localhost/BFP/assets/images/users/userav-min.png" class="img-circle" width="150" />
+                                    <h4 class="card-title m-t-10">Thom Anderson</h4>
+                                    <h6 class="card-subtitle"></h6>
+                                </center>
                             </div>
-
-                            <div class="card mb-4 py-3 border-bottom-secondary">
-                                <div class="card-body">
-                                    .border-bottom-secondary
-                                </div>
+                            <div> <hr> </div>
+                            <div class="card-body"> <small class="text-muted">Email address </small>
+                                <h6>thoma@mail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
+                                <h6>7856587870</h6> 
+                                <small class="text-muted p-t-30 db">Social Profile</small>
+                                <br/>
+                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-twitter"></i></a>
+                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-skype"></i></a>
+                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-google"></i></a>
                             </div>
-
-                            <div class="card mb-4 py-3 border-bottom-success">
-                                <div class="card-body">
-                                    .border-bottom-success
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-info">
-                                <div class="card-body">
-                                    .border-bottom-info
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-warning">
-                                <div class="card-body">
-                                    .border-bottom-warning
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-danger">
-                                <div class="card-body">
-                                    .border-bottom-danger
-                                </div>
-                            </div>
-
-                            <div class="card mb-4 py-3 border-bottom-dark">
-                                <div class="card-body">
-                                    .border-bottom-dark
-                                </div>
-                            </div>
-
+                        </div>                                                    
                         </div>
-
+                        <div class="col-md-8">
+                            <form class="row" method="post" action="db_edit.php" enctype="multipart/form-data">
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Name</label>
+                                    <input type="text" name="name" value="" class="form-control form-control-line" placeholder="Employee's Name" minlength="2" required > 
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Employee Code </label>
+                                    <input type="text" name="em_code" class="form-control form-control-line" placeholder="Example: 8820"> 
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Department</label>
+                                    <select name="department" class="form-control custom-select" required>
+                                        <option>Select Department</option>
+                                        <option value="2">Administration</option>
+                                        <option value="3">Finance, HR, & Admininstration</option>
+                                        <option value="4">Research</option>
+                                        <option value="5">Information Technology</option>
+                                        <option value="6">Support</option>
+                                        <option value="7">Network Engineering</option>
+                                        <option value="8">Sales and Marketing</option>
+                                        <option value="9">Helpdesk</option>
+                                        <option value="10">Project Management</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Role </label>
+                                    <select name="role" class="form-control custom-select" required>
+                                        <option>Select Role</option>
+                                        <option value="ADMIN">ADMIN</option>
+                                        <option value="EMPLOYEE">Employee</option>
+                                        <option value="SUPER ADMIN">Super Admin</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Gender </label>
+                                    <select name="gender" class="form-control custom-select" required>
+                                        <option>Select Gender</option>
+                                        <option value="MALE">Male</option>
+                                        <option value="FEMALE">Female</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Contact Number </label>
+                                    <input type="text" name="contact" class="form-control" value="" placeholder="+63" minlength="12" maxlength="15" required> 
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Date Of Birth </label>
+                                    <input type="date" name="date_birth" id="example-email2" name="example-email" class="form-control" placeholder="" required> 
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Date Of Joining </label>
+                                    <input type="date" name="date_joining" id="example-email2" name="example-email" class="form-control" placeholder=""> 
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Username </label>
+                                    <input type="text" name="username" class="form-control form-control-line" value="" placeholder="Username"> 
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Email </label>
+                                    <input type="email" id="example-email2" name="email" class="form-control" placeholder="email@mail.com" minlength="7" required > 
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Password </label>
+                                    <input type="text" name="password" class="form-control" value="" placeholder="**********"> 
+                                </div>
+                                <div class="form-group col-md-3 m-t-20">
+                                    <label>Confirm Password </label>
+                                    <input type="text" name="password" class="form-control" value="" placeholder="**********"> 
+                                </div>
+				                <div class="form-group col-md-12 m-t-10">
+                                    <img src="http://localhost/BFP/assets/images/users/userav-min.png" class="img-circle" width="150" />
+                                    <label>Image </label>
+                                    <input type="file"  name="image_url" class="form-control" value=""> 
+                                </div>
+                                <div class="form-actions col-md-12">
+                                    <input type="hidden" name="emid" value="Soy1332">
+				                    <button type="submit" class="btn btn-success" name="update"> <i class="fa fa-check"></i> Save</button>
+				                    <a href="staff.php"><button type="button" class="btn btn-danger">Cancel</button></a>
+				                </div>
+				            </form>
+                        </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
-
             </div>
             <!-- End of Main Content -->
 
@@ -505,7 +526,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="login.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -520,6 +541,13 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 
