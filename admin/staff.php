@@ -421,6 +421,7 @@ include "db/db_con.php";
                                         </tr>
                                     </thead>
                                     <tbody>
+<<<<<<< HEAD
                                         <?php
                                         $sql = "SELECT * FROM staff ORDER BY id DESC";
                                         $result = mysqli_query($con,$sql);
@@ -450,6 +451,27 @@ include "db/db_con.php";
 
                                         ?>
                                      
+=======
+                                     <?php 
+			  	                       $i = 0;
+			  	                       while($rows = mysqli_fetch_assoc($result)){
+			  	                       $i++;
+			  	                     ?>
+			                         <tr>
+			                             <th scope="row"><?=$i?></th>
+			                             <td><?=$rows['name']?></td>
+			                             <td><?php echo $rows['email']; ?></td>
+                                         <td><?php echo $rows['contact']; ?></td>
+                                         <td><?php echo $rows['role']; ?></td>
+			                             <td><a href="staff-edit.php?id=<?=$rows['id']?>" 
+			      	                         class="btn btn-success"><i class="fas fa-pen-square"></i></a>
+			      	                         <a href="db_delete.php?id=<?=$rows['id']?>" 
+			      	                         class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+			                             </td>
+			                         </tr>
+			                         <?php } ?>
+                                      
+>>>>>>> d9ee356f851342275bdb49740a3f05482bede971
                                     </tbody>
                                 
                                 </table>
