@@ -422,6 +422,7 @@ include "db/db_con.php";
                                     </thead>
                                     <tbody>
                                         <?php
+                                        $i=1;
                                         $sql = "SELECT * FROM staff ORDER BY id DESC";
                                         $result = mysqli_query($con,$sql);
                                         if ($result) {
@@ -432,7 +433,7 @@ include "db/db_con.php";
                                                 $cont=$row['contact'];
                                                 $role=$row['role'];
                                                 echo '<tr>
-                                                <th scope="row">'.$id.'</th>
+                                                <th scope="row">'.$i++.'</th>
                                                 <td>'.$name.'</td>
                                                 <td>'.$email.'</td>
                                                 <td>'.$cont.'</td>
