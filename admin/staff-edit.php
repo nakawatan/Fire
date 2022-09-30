@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include 'db/db_con.php';
 $id = $_GET['updateid'];
 $sql = "SELECT * FROM `staff` WHERE `id`='$id'";
@@ -15,6 +16,7 @@ $address=$row['address'];
 $uname=$row['username'];
 $email=$row['email'];
 $pass=$row['password'];
+$img=$row['image'];
 
 
 if (isset($_POST['update'])) {
@@ -30,12 +32,28 @@ if (isset($_POST['update'])) {
     $email=$_POST['email'];
     $pass=$_POST['password'];
 
+    $new_img=$_FILES['image']['name'];
+    $old_img=$_POST['image1'];
+
+    if ($new_img != '')
+    {
+        $update_filename = $_FILES['image']['name'];
+
+    }else{
+
+        $update_filename = $old_img;
+    }
+
     $sql = "UPDATE `staff` SET `id`='$id',`name`='$name',`em_code`='$code',`department`='$dept',
     `role`='$role',`gender`='$gder',`contact`='$cont',`date_birth`='$bd',
-    `address`='$address',`username`='$uname',`email`='$email',`password`='$pass' WHERE `id`='$id'";
+    `address`='$address',`username`='$uname',`email`='$email',`password`='$pass', `image`= '$update_filename' WHERE `id`='$id'";
 
     $result = mysqli_query($con,$sql);
     if ($result){
+        if ($_FILES['image']['name'] !=''){
+            move_uploaded_file($_FILES["image"]["tmp_name"], "img/".$_FILES["image"]["name"]);
+            unlink("img/".$old_img);
+        }
         echo "<script>alert('Record updated successfully!');</script>";
         echo "<script>window.location.href='staff.php'</script>";
     }else{
@@ -166,57 +184,13 @@ if (isset($_POST['update'])) {
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.php">Buttons</a>
-                        <a class="collapse-item" href="cards.php">Cards</a>
+                        <a class="collapse-item" href="user.php">User</a>
                     </div>
                 </div>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.php">Login</a>
-                        <a class="collapse-item" href="register.php">Register</a>
-                        <a class="collapse-item" href="forgot-password.php">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.php">404 Page</a>
-                        <a class="collapse-item" href="blank.php">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item active">
-                <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -459,7 +433,7 @@ if (isset($_POST['update'])) {
                         <div class="card">
                             <div class="card-body">
                                 <center class="m-t-30">
-                                    <img src="http://localhost/BFP/assets/images/users/userav-min.png" class="img-circle" width="150" />
+                                    <img src="<?php echo "img/".$row['image']?>" class="img-circle" width="150" />
                                     <h4 class="card-title m-t-10"><?php echo $name; ?></h4>
                                     <h6 class="card-subtitle"></h6>
                                 </center>
@@ -544,9 +518,10 @@ if (isset($_POST['update'])) {
                                     <input type="text" name="password" value="<?php echo $pass; ?>" class="form-control" placeholder="**********"> 
                                 </div>
 				                <div class="form-group col-md-12 m-t-10">
-                                    <img src="http://localhost/BFP/assets/images/users/userav-min.png" class="img-circle" width="150" />
+                                    <img src="<?php echo "img/".$row['image']?>" class="img-circle" width="150" />
                                     <label>Image </label>
-                                    <input type="file"  name="image_url" class="form-control" value=""> 
+                                    <input type="hidden" name="image1" class="form-control" value="<?php echo $img; ?>"> 
+                                    <input type="file"  name="image" class="form-control"> 
                                 </div>
                                 <div class="form-actions col-md-12">
                                     <input type="hidden" name="emid" value="Soy1332">

@@ -87,7 +87,7 @@ include "db/db_con.php";
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="blank.php">
+                <a class="nav-link" href="anno.php">
                     <i class="fas fa-bullhorn"></i>
                     <span>Announcement</span></a>
             </li>
@@ -103,10 +103,10 @@ include "db/db_con.php";
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.php">Colors</a>
-                        <a class="collapse-item" href="utilities-border.php">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.php">Animations</a>
-                        <a class="collapse-item" href="utilities-other.php">Other</a>
+                        <a class="collapse-item" href="#">Walk-In Request</a>
+                        <a class="collapse-item" href="#">Pending Request</a>
+                        <a class="collapse-item" href="#">Approved Request</a>
+                        <a class="collapse-item" href="#">Declined Request</a>
                     </div>
                 </div>
             </li>
@@ -126,57 +126,13 @@ include "db/db_con.php";
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.php">Buttons</a>
-                        <a class="collapse-item" href="cards.php">Cards</a>
+                        <a class="collapse-item" href="user.php">User</a>
                     </div>
                 </div>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.php">Login</a>
-                        <a class="collapse-item" href="register.php">Register</a>
-                        <a class="collapse-item" href="forgot-password.php">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.php">404 Page</a>
-                        <a class="collapse-item" href="blank.php">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item active">
-                <a class="nav-link" href="tables.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -413,6 +369,7 @@ include "db/db_con.php";
                                     <thead>
                                         <tr>
                                             <th>No.</th>
+                                            <th>Photo</th>
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Contact</th>
@@ -422,31 +379,36 @@ include "db/db_con.php";
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $i=1;
+                                        
                                         $sql = "SELECT * FROM staff ORDER BY id DESC";
                                         $result = mysqli_query($con,$sql);
+                                        $i=1;
                                         if ($result) {
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 $id=$row['id'];
+                                                $img=$row['image'];
                                                 $name=$row['name'];
                                                 $email=$row['email'];
                                                 $cont=$row['contact'];
                                                 $role=$row['role'];
-                                                echo '<tr>
-                                                <th scope="row">'.$i++.'</th>
-                                                <td>'.$name.'</td>
-                                                <td>'.$email.'</td>
-                                                <td>'.$cont.'</td>
-                                                <td>'.$role.'</td>
-                                                <td><a href="staff-edit.php?updateid='.$id.'" 
-                                                    class="btn btn-success"><i class="fas fa-pen-square"></i></a>
-                                                    <a href="staff-delete.php?deleteid='.$id.'" 
-                                                    class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                                                </td>
-                                                </tr>';
+                                                ?>
+                                                <tr>
+                                                    <th><?php echo $row['id']; ?></th>
+                                                    <td><img src="<?php echo "img/".$row['image'];?>" class="img-circle" width="50" height="50"></td>
+                                                    <td><?php echo $row['name']; ?></td>
+                                                    <td><?php echo $row['email']; ?></td>
+                                                    <td><?php echo $row['contact']; ?></td>
+                                                    <td><?php echo $row['role']; ?></td>
+                                                    <td><a href="staff-edit.php?updateid=<?php echo $row['id'];?>" 
+                                                        class="btn btn-success"><i class="fas fa-pen-square"></i></a>
+                                                        <a href="staff-delete.php?deleteid=<?php echo $row['id'];?>" 
+                                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                    </td>
+                                                </tr>
+                                        <?php
                                             }
                                         }
-
+                                        
                                         ?>
                                     </tbody>
                                 
@@ -459,7 +421,6 @@ include "db/db_con.php";
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
-
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">

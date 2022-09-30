@@ -1,40 +1,3 @@
-<?php 
-session_start();
-include 'db/db_con.php';
-if (isset($_POST['create'])) {
-    $name=$_POST['name'];
-    $code=$_POST['em_code'];
-    $dept=$_POST['department'];
-    $role=$_POST['role'];
-    $gder=$_POST['gender'];
-    $cont=$_POST['contact'];
-    $bd=$_POST['date_birth'];
-    $address=$_POST['address'];
-    $uname=$_POST['username'];
-    $email=$_POST['email'];
-    $pass=$_POST['password'];
-    $img=$_FILES['image']['name'];
-    
-
-    $sql = "INSERT INTO staff(name, em_code, department, role, gender, contact, date_birth, address, username, email, password, image) 
-    VALUES ('$name', '$code', '$dept', '$role', '$gder', '$cont', '$bd', '$address', '$uname', '$email', '$pass', '$img')";
-
-    $result = mysqli_query($con,$sql);
-
-    if ($result){
-        move_uploaded_file($_FILES["image"]["tmp_name"], "img/".$_FILES["image"]["name"]);
-        echo "<script>alert('Record inserted successfully');</script>";
-        echo "<script>window.location.href='staff.php'</script>";
-    }else{
-        echo "<script>alert('Something wrong with the insertion of the records');</script>";
-        echo "<script>window.location.href='staff-create.php'</script>";
-    }
-    
-}
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,19 +9,16 @@ if (isset($_POST['create'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>SB Admin 2 - Blank</title>
 
-    <!-- Custom fonts for this template -->
+    <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -82,7 +42,7 @@ if (isset($_POST['create'])) {
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -106,8 +66,8 @@ if (isset($_POST['create'])) {
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.php">Buttons</a>
-                        <a class="collapse-item" href="cards.php">Cards</a>
+                        <a class="collapse-item" href="blank.php">Fire Code Assessor</a>
+                        <a class="collapse-item" href="blank.php">Fire Code Fees</a>
                     </div>
                 </div>
             </li>
@@ -119,7 +79,7 @@ if (isset($_POST['create'])) {
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="blank.php">
+                <a class="nav-link" href="anno.php">
                     <i class="fas fa-bullhorn"></i>
                     <span>Announcement</span></a>
             </li>
@@ -135,16 +95,16 @@ if (isset($_POST['create'])) {
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.php">Colors</a>
-                        <a class="collapse-item" href="utilities-border.php">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.php">Animations</a>
-                        <a class="collapse-item" href="utilities-other.php">Other</a>
+                        <a class="collapse-item" href="#">Walk-In Request</a>
+                        <a class="collapse-item" href="#">Pending Request</a>
+                        <a class="collapse-item" href="#">Approved Request</a>
+                        <a class="collapse-item" href="#">Declined Request</a>
                     </div>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="blank.php">
+                <a class="nav-link" href="staff.php">
                     <i class="fas fa-user-friends"></i>
                     <span>Staff</span></a>
             </li>
@@ -158,7 +118,8 @@ if (isset($_POST['create'])) {
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="user.php">User</a>
+                        <a class="collapse-item" href="buttons.php">Buttons</a>
+                        <a class="collapse-item" href="cards.php">Cards</a>
                     </div>
                 </div>
             </li>
@@ -184,11 +145,9 @@ if (isset($_POST['create'])) {
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <form class="form-inline">
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </form>
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
 
                     <!-- Topbar Search -->
                     <form
@@ -391,93 +350,29 @@ if (isset($_POST['create'])) {
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                          <div class="pull-left m-0 font-weight-bold text-primary"> Add New User</div>
+                          <div class="pull-left m-0 font-weight-bold text-primary">
+                          <a href="anno-create.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary"><i class="fas fa-bullhorn"></i> Add New Announcement</button></a>
+                          <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-secondary"><i class="fas fa-archive"></i> Archived Announcements</button>
+                          </div>
                         </div>
                         <div class="card-body">
-                                <form class="row" method="post" enctype="multipart/form-data">
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Name</label>
-                                        <input type="text" name="name" class="form-control form-control-line" placeholder="Employee's Name" minlength="2" required > 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Employee Code </label>
-                                        <input type="text" name="em_code" class="form-control form-control-line" placeholder="Example: 8820"> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Department</label>
-                                        <select name="department" value="" class="form-control custom-select" required>
-                                            <option>Select Department</option>
-                                            <option value="2">Administration</option>
-                                            <option value="3">Finance, HR, & Admininstration</option>
-                                            <option value="4">Research</option>
-                                            <option value="5">Information Technology</option>
-                                            <option value="6">Support</option>
-                                            <option value="7">Network Engineering</option>
-                                            <option value="8">Sales and Marketing</option>
-                                            <option value="9">Helpdesk</option>
-                                            <option value="10">Project Management</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Role </label>
-                                        <select name="role" class="form-control custom-select" required>
-                                            <option>Select Role</option>
-                                            <option value="ADMIN">ADMIN</option>
-                                            <option value="EMPLOYEE">Employee</option>
-                                            <option value="SUPER ADMIN">Super Admin</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Gender </label>
-                                        <select name="gender" class="form-control custom-select" required>
-                                            <option>Select Gender</option>
-                                            <option value="MALE">Male</option>
-                                            <option value="FEMALE">Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Contact Number </label>
-                                        <input type="text" name="contact" class="form-control" value="" placeholder="+63" minlength="12" maxlength="15" required> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Date Of Birth </label>
-                                        <input type="date" name="date_birth" id="example-email2" name="example-email" class="form-control" placeholder="" required> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Address</label>
-                                        <input type="text" name="address" id="example-email2" name="example-email" class="form-control" placeholder=""> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Username </label>
-                                        <input type="text" name="username" class="form-control form-control-line" value="" placeholder="Username"> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Email </label>
-                                        <input type="email" id="example-email2" name="email" class="form-control" placeholder="email@mail.com" minlength="7" required > 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Password </label>
-                                        <input type="text" name="password" class="form-control" value="" placeholder="**********"> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Confirm Password </label>
-                                        <input type="text" name="password" class="form-control" value="" placeholder="**********"> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Image </label>
-                                        <input type="file" name="image" class="form-control" value=""> 
-                                    </div>
-                                    <div class="form-actions col-md-12">
-                                        <button type="submit" class="btn btn-primary" name="create"> <i class="fa fa-check"></i>Save</button>
-                                        <a href="staff.php"><button type="button" class="btn btn-danger">Cancel</button></a>
-                                    </div>
-                                </form>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Title</th>
+                                            <th>Detail</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- /.container-fluid -->
-            
-                
 
             </div>
             <!-- End of Main Content -->
@@ -486,7 +381,7 @@ if (isset($_POST['create'])) {
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Your Website 2021</span>
                     </div>
                 </div>
             </footer>
@@ -517,7 +412,7 @@ if (isset($_POST['create'])) {
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.php">Logout</a>
+                    <a class="btn btn-primary" href="db_logout.php">Logout</a>
                 </div>
             </div>
         </div>
@@ -534,11 +429,11 @@ if (isset($_POST['create'])) {
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 
