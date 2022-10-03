@@ -347,7 +347,36 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                   
+                   <!-- DataTales Example -->
+                   <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                          <div class="pull-left m-0 font-weight-bold text-primary"> Announcements</div>
+                        </div>
+                        <div class="card-body">
+                                <form class="row" method="post" enctype="multipart/form-data">
+                                    <div class="form-group col-md-12 ">
+                                        <label>Titel</label>
+                                        <input type="text" name="name" class="form-control form-control-line" placeholder="" required > 
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label>Details</label>
+                                        <textarea name="details" class="form-control form-control-line"></textarea> 
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Date</label>
+                                        <input type="datetime-local" name="date" class="form-control form-control-line" placeholder="" required > 
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label>Image </label>
+                                        <input type="file" name="image" class="form-control" value=""> 
+                                    </div>
+                                    <div class="form-actions col-md-12">
+                                        <button type="submit" class="btn btn-primary" name="create"> <i class="fa fa-check"></i>Save</button>
+                                        <a href="anno.php"><button type="button" class="btn btn-danger">Cancel</button></a>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 
