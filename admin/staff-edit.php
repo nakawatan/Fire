@@ -44,6 +44,10 @@ if (isset($_POST['update'])) {
         $update_filename = $old_img;
     }
 
+    $allowed_exttension = array('gif', 'png', 'jpg', 'jpeg');
+    $filename = $_FILES['image']['name'];
+    $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
+
     $sql = "UPDATE `staff` SET `id`='$id',`name`='$name',`em_code`='$code',`department`='$dept',
     `role`='$role',`gender`='$gder',`contact`='$cont',`date_birth`='$bd',
     `address`='$address',`username`='$uname',`email`='$email',`password`='$pass', `image`= '$update_filename' WHERE `id`='$id'";
@@ -140,12 +144,6 @@ if (isset($_POST['update'])) {
 
             <li class="nav-item">
                 <a class="nav-link" href="blank.php">
-                    <i class="fas fa-comments"></i>
-                    <span>Messages</span></a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="blank.php">
                     <i class="fas fa-bullhorn"></i>
                     <span>Announcement</span></a>
             </li>
@@ -170,7 +168,7 @@ if (isset($_POST['update'])) {
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="blank.php">
+                <a class="nav-link" href="staff.php">
                     <i class="fas fa-user-friends"></i>
                     <span>Staff</span></a>
             </li>
@@ -308,72 +306,6 @@ if (isset($_POST['update'])) {
                             </div>
                         </li>
 
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -422,7 +354,7 @@ if (isset($_POST['update'])) {
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                          <div class="pull-left m-0 font-weight-bold text-primary"> Add New User</div>
+                          <div class="pull-left m-0 font-weight-bold text-primary"> Edit Profile Staff</div>
                         </div>
                         <div class="tab-content">
                                 <div class="tab-pane active" id="home" role="tabpanel">
@@ -433,7 +365,7 @@ if (isset($_POST['update'])) {
                         <div class="card">
                             <div class="card-body">
                                 <center class="m-t-30">
-                                    <img src="<?php echo "img/".$row['image']?>" class="img-circle" width="150" />
+                                    <img src="<?php echo "img/".$row['image']?>" class="w-100 shadow-1-strong rounded mb-4" >
                                     <h4 class="card-title m-t-10"><?php echo $name; ?></h4>
                                     <h6 class="card-subtitle"></h6>
                                 </center>
@@ -442,12 +374,6 @@ if (isset($_POST['update'])) {
                             <div class="card-body"> <small class="text-muted">Email address </small>
                                 <h6><?php echo $email; ?></h6> <small class="text-muted p-t-30 db">Phone</small>
                                 <h6><?php echo $cont; ?></h6> 
-                                <small class="text-muted p-t-30 db">Social Profile</small>
-                                <br/>
-                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-skype"></i></a>
-                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-google"></i></a>
                             </div>
                         </div>                                                    
                         </div>
@@ -513,12 +439,7 @@ if (isset($_POST['update'])) {
                                     <label>Email </label>
                                     <input type="email" id="example-email2" value="<?php echo $email; ?>" name="email" class="form-control" placeholder="email@mail.com" minlength="7" required > 
                                 </div>
-                                <div class="form-group col-md-3 m-t-20">
-                                    <label>Password </label>
-                                    <input type="text" name="password" value="<?php echo $pass; ?>" class="form-control" placeholder="**********"> 
-                                </div>
 				                <div class="form-group col-md-12 m-t-10">
-                                    <img src="<?php echo "img/".$row['image']?>" class="img-circle" width="150" />
                                     <label>Image </label>
                                     <input type="hidden" name="image1" class="form-control" value="<?php echo $img; ?>"> 
                                     <input type="file"  name="image" class="form-control"> 

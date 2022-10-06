@@ -60,7 +60,7 @@
 
                                     <form class="user" action="db_login.php" method="post">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" name="email" placeholder="Enter Email Address...">
+                                            <input type="text" class="form-control form-control-user" name="username" placeholder="Enter Username">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" name="password" placeholder="Password">

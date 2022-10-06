@@ -1,39 +1,54 @@
 <?php 
 session_start();
 include 'db/db_con.php';
-if (isset($_POST['create'])) {
-    $name=$_POST['name'];
-    $status=$_POST['status'];
-    $gder=$_POST['gender'];
-    $cont=$_POST['contact'];
-    $bd=$_POST['birth'];
-    $address=$_POST['address'];
-    $uname=$_POST['username'];
-    $email=$_POST['email'];
-    $pass=$_POST['password'];
-    $img=$_FILES['image']['name'];
-    
+$id = $_GET['updateid'];
+$sql = "SELECT * FROM `anno` WHERE `id`='$id'";
+$result = mysqli_query($con,$sql);
+$row = mysqli_fetch_assoc($result);
+$title=$row['title'];
+$detail=$row['detail'];
+$date=$row['date'];
+$img=$row['image'];
+
+
+if (isset($_POST['update'])) {
+    $title=$_POST['title'];
+    $detail=$_POST['detail'];
+    $date=$_POST['date'];
+
+    $new_img=$_FILES['image']['name'];
+    $old_img=$_POST['image1'];
+
+    if ($new_img != '')
+    {
+        $update_filename = $_FILES['image']['name'];
+
+    }else{
+
+        $update_filename = $old_img;
+    }
+
     $allowed_exttension = array('gif', 'png', 'jpg', 'jpeg');
     $filename = $_FILES['image']['name'];
     $file_extension = pathinfo($filename, PATHINFO_EXTENSION);
 
-    $sql = "INSERT INTO user (name, status, gender, contact, birth, address, username, email, password, image) 
-    VALUES ('$name', '$status', '$gder', '$cont', '$bd', '$address', '$uname', '$email', '$pass', '$img')";
+    $sql = "UPDATE `anno` SET `id`='$id',`title`='$title',
+    `detail`='$detail',`date`='$date', `image`= '$update_filename' WHERE `id`='$id'";
 
     $result = mysqli_query($con,$sql);
-
     if ($result){
-        move_uploaded_file($_FILES["image"]["tmp_name"], "img/".$_FILES["image"]["name"]);
-        echo "<script>alert('Record inserted successfully');</script>";
-        echo "<script>window.location.href='user.php'</script>";
+        if ($_FILES['image']['name'] !=''){
+            move_uploaded_file($_FILES["image"]["tmp_name"], "img/".$_FILES["image"]["name"]);
+            unlink("img/".$old_img);
+        }
+        echo "<script>alert('Record updated successfully!');</script>";
+        echo "<script>window.location.href='anno.php'</script>";
     }else{
         echo "<script>alert('Something wrong with the insertion of the records');</script>";
-        echo "<script>window.location.href='user-create.php'</script>";
+        echo "<script>window.location.href='anno-edit.php'</script>";
     }
-    
 }
 ?>
-
 
 
 <!DOCTYPE html>
@@ -47,22 +62,19 @@ if (isset($_POST['create'])) {
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>BFP R4A Mabini</title>
+    <link rel="icon" type="img/png" sizes="16x16" href="img/bfp.png">
 
-    <!-- Custom fonts for this template -->
+    <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
 </head>
-
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -283,7 +295,7 @@ if (isset($_POST['create'])) {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $name; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
@@ -317,77 +329,45 @@ if (isset($_POST['create'])) {
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <?php if (isset($_GET['error'])) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $_GET['error']; ?>
+                    </div>
+                    <?php } ?>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                           <div class="pull-left m-0 font-weight-bold text-primary"> Add New User</div>
                         </div>
                         <div class="card-body">
-                                <form class="row" method="post" enctype="multipart/form-data">
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Name</label>
-                                        <input type="text" name="name" class="form-control form-control-line" placeholder="Employee's Name" minlength="2" required > 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Status </label>
-                                        <select name="status" class="form-control custom-select" required>
-                                            <option>Select Status</option>
-                                            <option value="Active">Active</option>
-                                            <option value="Inactive">Inactive</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Gender </label>
-                                        <select name="gender" class="form-control custom-select" required>
-                                            <option>Select Gender</option>
-                                            <option value="MALE">Male</option>
-                                            <option value="FEMALE">Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Contact Number </label>
-                                        <input type="text" name="contact" class="form-control" value="" placeholder="+63" minlength="12" maxlength="15" required> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Date Of Birth </label>
-                                        <input type="date" name="birth" id="example-email2" name="example-email" class="form-control" placeholder="" required> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Address</label>
-                                        <input type="text" name="address" id="example-email2" name="example-email" class="form-control" placeholder=""> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Username </label>
-                                        <input type="text" name="username" class="form-control form-control-line" value="" placeholder="Username"> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Email </label>
-                                        <input type="email" id="example-email2" name="email" class="form-control" placeholder="email@mail.com" minlength="7" required > 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Password </label>
-                                        <input type="text" name="password" class="form-control" value="" placeholder="**********"> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Confirm Password </label>
-                                        <input type="text" name="password" class="form-control" value="" placeholder="**********"> 
-                                    </div>
-                                    <div class="form-group col-md-3 m-t-20">
-                                        <label>Image </label>
-                                        <input type="file" name="image" class="form-control" value=""> 
-                                    </div>
-                                    <div class="form-actions col-md-12">
-                                        <button type="submit" class="btn btn-primary" name="create"> <i class="fa fa-check"></i>Save</button>
-                                        <a href="user.php"><button type="button" class="btn btn-danger">Cancel</button></a>
-                                    </div>
-                                </form>
+                            <form class="row" method="post" enctype="multipart/form-data">
+                                <div class="form-group col-md-12 ">
+                                    <label>Titel</label>
+                                    <input type="text" name="title" class="form-control form-control-line" value="<?php echo $title; ?>" placeholder="" required > 
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label>Details</label>
+                                    <textarea name="detail" class="form-control form-control-line"><?php echo $detail; ?></textarea> 
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Date</label>
+                                    <input type="datetime-local" name="date" class="form-control form-control-line" value="<?php echo $date; ?>" placeholder="" required > 
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label>Image </label>
+                                    <input type="hidden" name="image1" class="form-control" value="<?php echo $img; ?>"> 
+                                    <input type="file"  name="image" class="form-control"> 
+                                    <img src="<?php echo "img/".$row['image']?>" style="height: 70%;width: 100%;padding-top: 20px;">
+                                </div>
+                                <div class="form-actions col-md-12">
+				                    <button type="submit" class="btn btn-success" name="update"> <i class="fa fa-check"></i>Update</button>
+				                    <a href="anno.php"><button type="button" class="btn btn-danger">Cancel</button></a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <!-- /.container-fluid -->
-            
-                
-
             </div>
             <!-- End of Main Content -->
 
