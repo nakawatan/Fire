@@ -9,7 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>BFP R4A Mabini</title>
+    <link rel="icon" type="img/png" sizes="16x16" href="img/bfp.png">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -65,10 +66,9 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.php" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                        <button class="btn btn-user btn-primary btn-block" >Login</button>
                                         <hr>
+                                        
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
