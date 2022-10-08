@@ -53,8 +53,8 @@ if (isset($_POST['update'])) {
     $result = mysqli_query($con,$sql);
     if ($result){
         if ($_FILES['image']['name'] !=''){
-            move_uploaded_file($_FILES["image"]["tmp_name"], "img/".$_FILES["image"]["name"]);
-            unlink("img/".$old_img);
+            move_uploaded_file($_FILES["image"]["tmp_name"], "img/user".$_FILES["image"]["name"]);
+            unlink("img/user".$old_img);
         }
         echo "<script>alert('Successfully updated user details!');</script>";
         echo "<script>window.location.href='user.php'</script>";
@@ -85,7 +85,7 @@ if (isset($_POST['update'])) {
                         <div class="card">
                             <div class="card-body">
                                 <center class="m-t-30">
-                                    <img src="<?php echo "img/".$row['image']?>" class="img-circle" width="150" />
+                                    <img src="<?php echo "img/user".$row['image']?>" class="img-circle" width="150" />
                                     <h4 class="card-title m-t-10"><?php echo $name; ?></h4>
                                     <h6 class="card-subtitle"></h6>
                                 </center>
@@ -150,7 +150,7 @@ if (isset($_POST['update'])) {
                                     <input type="password" name="password" id="password" value="<?php echo $pass; ?>" class="form-control" placeholder="**********"> 
                                 </div>
 				                <div class="form-group col-md-12 m-t-10">
-                                    <img src="<?php echo "img/".$row['image']?>" class="img-circle" width="150" />
+                                    <img src="<?php echo "img/user".$row['image']?>" class="img-circle" width="150" />
                                     <label>Image </label>
                                     <input type="hidden" name="image1" class="form-control" value="<?php echo $img; ?>"> 
                                     <input type="file"  name="image" class="form-control"> 

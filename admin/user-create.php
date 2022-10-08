@@ -24,7 +24,7 @@ if (isset($_POST['create'])) {
     $result = mysqli_query($con,$sql);
 
     if ($result){
-        move_uploaded_file($_FILES["image"]["tmp_name"], "img/".$_FILES["image"]["name"]);
+        move_uploaded_file($_FILES["image"]["tmp_name"], "img/user".$_FILES["image"]["name"]);
         echo "<script>alert('Successfully added new admin user!');</script>";
         echo "<script>window.location.href='user.php'</script>";
     }else{
