@@ -13,6 +13,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     $uname = validate($_POST['username']);
 	$password = validate($_POST['password']);
+    $name = validate($_POST['name']);
 
     if (empty($uname)) {
 		header("Location: login.php?error=Email is required");
@@ -30,6 +31,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             if ($row['username'] === $uname && $row['password'] === $password) {
                 $_SESSION['username'] = $uname;
                 $_SESSION['password'] = $password;
+                $_SESSION['name'] = $name;
 				header("Location: index.php");
                 exit();
               
