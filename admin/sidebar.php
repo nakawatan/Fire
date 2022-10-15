@@ -34,7 +34,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-folder"></i>
                     <span>Records</span>
@@ -42,8 +42,32 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="blank.php">Fire Code Assessor</a>
-                        <a class="collapse-item" href="blank.php">Fire Code Fees</a>
+                        <a class="collapse-item" href="record.php">Client</a>
+                        <a class="collapse-item" href="blank.php">Compliant</a>
+                        <a class="collapse-item" href="blank.php">Non Compliant</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="staff.php">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span>Approval</span></a>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-database"></i>
+                    <span>Request</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Utilities:</h6>
+                        <a class="collapse-item" href="#">Public</a>
+                        <a class="collapse-item" href="#">Private</a>
                     </div>
                 </div>
             </li>
@@ -52,31 +76,6 @@
                 <a class="nav-link" href="anno.php">
                     <i class="fas fa-bullhorn"></i>
                     <span>Announcement</span></a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-database"></i>
-                    <span>Monitoring of Request</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="#">Walk-In Request</a>
-                        <a class="collapse-item" href="#">Pending Request</a>
-                        <a class="collapse-item" href="#">Approved Request</a>
-                        <a class="collapse-item" href="#">Declined Request</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="staff.php">
-                    <i class="fas fa-user-friends"></i>
-                    <span>Staff</span></a>
             </li>
 
             <li class="nav-item">

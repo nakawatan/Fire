@@ -152,8 +152,5 @@ include ('topbar.php');
                             </div>
                         </div>
                     </div>
-
-                </div>
-                <!-- /.container-fluid -->
 <?php include ('footer.php');?>
             

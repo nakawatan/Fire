@@ -116,7 +116,5 @@ if (isset($_POST['create'])) {
                                     </div>
                                 </form>
                         </div>
-                    </div>
-                </div>
-                <!-- /.container-fluid -->
+                    </div>                
 <?php include ('footer.php');?>

@@ -9,42 +9,47 @@ include ('topbar.php');
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                          <a href="anno-create.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary"><i class="fas fa-bullhorn"></i> Add New Announcement</button></a>
+                          <div class="pull-left m-0 font-weight-bold text-primary"> Clients Management 
+                             <a href="re-create.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary">Add New Client</button></a>
+                          </div>
                         </div>
+                        
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Image</th>
-                                            <th>Title</th>
-                                            <th>Detail</th>
-                                            <th>Date</th>
+                                            <th>Permit Number</th>
+                                            <th>Name</th>
+                                            <th>Establishment Type</th>
+                                            <th>Contact</th>
+                                            <th>Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         
-                                        $sql = "SELECT * FROM anno ORDER BY id DESC";
+                                        $sql = "SELECT * FROM `record` ORDER BY id DESC";
                                         $result = mysqli_query($con,$sql);
                                         $i=1;
                                         if ($result) {
                                             while ($row = mysqli_fetch_assoc($result)) {
-    
-                                                $img=$row['image'];
-                                                $title=$row['title'];
-                                                $details=$row['detail'];
-                                                $date=$row['date'];
+                                                $pnum=$row['permit_num'];
+                                                $name=$row['name'];
+                                                $etab=$row['estab'];
+                                                $cont=$row['contact'];
+                                                $address=$row['address'];
                                                 ?>
                                                 <tr>
-                                                    <td><img src="<?php echo "img/".$row['image'];?>" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"></td>
-                                                    <td><?php echo $row['title']; ?></td>
-                                                    <td><?php echo $row['detail']; ?></td>
-                                                    <td><?php echo $row['date']; ?></td>
-                                                    <td><a href="anno-edit.php?updateid=<?php echo $row['id'];?>" 
+                                                    <td><?php echo $row['permit_num']; ?></td>
+                                                    <td><?php echo $row['name']; ?></td>
+                                                    <td><?php echo $row['estab']; ?></td>
+                                                    <td><?php echo $row['contact']; ?></td>
+                                                    <td><?php echo $row['address']; ?></td>
+                                                    <td><a href="staff-edit.php?updateid=<?php echo $row['id'];?>" 
                                                         class="btn btn-success"><i class="fas fa-pen-square"></i></a>
-                                                        <a href="anno-delete.php?deleteid=<?php echo $row['id'];?>" 
+                                                        <a href="staff-delete.php?deleteid=<?php echo $row['id'];?>" 
                                                         class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                 </tr>
@@ -54,6 +59,7 @@ include ('topbar.php');
                                         
                                         ?>
                                     </tbody>
+                                
                                 </table>
                                
                             </div>
