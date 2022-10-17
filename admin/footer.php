@@ -60,6 +60,8 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
+    <script src="js/tether.min.js"></script>
+
 </body>
 
 </html>

@@ -39,14 +39,22 @@ include ('topbar.php');
                                                 $name=$row['name'];
                                                 $uname=$row['username'];
                                                 $status=$row['status'];
-                                                if ($status=="active") $flag="success";else $flag="danger";
+                                               
                                                 ?>
                                                 <tr>
                                                     
                                                     <td><img src="<?php echo "img/".$row['image'];?>" class="img-circle" alt="Cinque Terre" width="60" height="60"></td>
                                                     <td><?php echo $row['name']; ?></td>
                                                     <td><?php echo $row['username']; ?></td>
-                                                    <td><span class="badge badge-<?php echo $flag;?>"><?php echo $status;?></span></td>
+                                                    <td><?php 
+                                                            if ($row['status'] == "Active") {
+                                                                echo "<span class='badge badge-success'>Active</span>";
+                                                            }
+                                                            else{
+                                                                echo "<span class='badge badge-danger'>Inactive</span>";
+                                                            }
+                                                        ?>
+                                                    </td>
                                                     <td><a href="user-edit.php?updateid=<?php echo $row['id'];?>" 
                                                         class="btn btn-success"><i class="fas fa-pen-square"></i></a>
                                                         <a href="user-delete.php?deleteid=<?php echo $row['id'];?>" 
