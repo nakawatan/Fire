@@ -42,34 +42,24 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="record.php">Client</a>
-                        <a class="collapse-item" href="blank.php">Compliant</a>
-                        <a class="collapse-item" href="blank.php">Non Compliant</a>
+                        <a class="collapse-item" href="#">Compliant</a>
+                        <a class="collapse-item" href="#">Non Compliant</a>
                     </div>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="staff.php">
+                <a class="nav-link" href="#">
                     <i class="fas fa-thumbs-up"></i>
                     <span>Approval</span></a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link" href="request.php">
                     <i class="fas fa-database"></i>
                     <span>Request</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="#">Public</a>
-                        <a class="collapse-item" href="#">Private</a>
-                    </div>
-                </div>
             </li>
 
             <li class="nav-item">

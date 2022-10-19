@@ -9,9 +9,7 @@ include ('topbar.php');
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                          <div class="pull-left m-0 font-weight-bold text-primary"> Clients Management 
-                             <a href="re-create.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary">Add New Client</button></a>
-                          </div>
+                          <div class="pull-left m-0 font-weight-bold text-primary" style="text-align: center;">FIRE SAFETY INSPECTION CERTIFICATE APPLICATION FORM OF CLIENT</div>
                         </div>
                         
                         <div class="card-body">
@@ -19,9 +17,10 @@ include ('topbar.php');
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Permit Number</th>
-                                            <th>Name</th>
-                                            <th>Establishment Type</th>
+                                            <th>Application Number</th>
+                                            <th>Name of Owner</th>
+                                            <th>Establishment Name</th>
+                                            <th>Date</th>
                                             <th>Contact</th>
                                             <th>Address</th>
                                             <th>Action</th>
@@ -35,21 +34,23 @@ include ('topbar.php');
                                         $i=1;
                                         if ($result) {
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                                $pnum=$row['permit_num'];
-                                                $name=$row['name'];
-                                                $etab=$row['estab'];
-                                                $cont=$row['contact'];
+                                                $appnum=$row['appnum'];
+                                                $nowner=$row['nowner'];
+                                                $esname=$row['esname'];
+                                                $date=$row['date'];
+                                                $contact=$row['contact'];
                                                 $address=$row['address'];
                                                 ?>
                                                 <tr>
-                                                    <td><?php echo $row['permit_num']; ?></td>
-                                                    <td><?php echo $row['name']; ?></td>
-                                                    <td><?php echo $row['estab']; ?></td>
+                                                    <td><?php echo $row['appnum']; ?></td>
+                                                    <td><?php echo $row['nowner']; ?></td>
+                                                    <td><?php echo $row['esname']; ?></td>
+                                                    <td><?php echo $row['date']; ?></td>
                                                     <td><?php echo $row['contact']; ?></td>
                                                     <td><?php echo $row['address']; ?></td>
                                                     <td><a href="staff-edit.php?updateid=<?php echo $row['id'];?>" 
                                                         class="btn btn-success"><i class="fas fa-pen-square"></i></a>
-                                                        <a href="staff-delete.php?deleteid=<?php echo $row['id'];?>" 
+                                                        <a href="re-delete.php?deleteid=<?php echo $row['id'];?>" 
                                                         class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                 </tr>

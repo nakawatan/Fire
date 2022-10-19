@@ -20,7 +20,7 @@ if (isset($_POST['create'])) {
 
     if ($result){
         echo "<script>alert('Successfully added new client!');</script>";
-        echo "<script>window.location.href='record.php'</script>";
+        echo "<script>window.location.href='request.php'</script>";
     }else{
         echo "<script>alert('Something is wrong with the insertion of the register.');</script>";
         echo "<script>window.location.href='re-create.php'</script>";
