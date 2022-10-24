@@ -71,7 +71,7 @@ if (isset($_POST['create'])) {
                                     <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
                                 </div>
                                 <div class="form-group col-md-20 m-t-20">
-                                    <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success" name="create">Next</button>
+                                    <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success" name="create">Submit</button>
                                     <button type="reset" class="d-none d-sm-inline-block btn btn-sm btn-warning btn-default">Clear</button>
                                     <a href="form.php"><button type="button" class="float-right d-none d-sm-inline-block btn btn-sm btn-danger">
                                     Back</button></a>
