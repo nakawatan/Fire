@@ -87,21 +87,21 @@ if ($result) {
                                 </li>
                             </ul>
                             <div class="card-body">
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">CERTIFIED TRUE COPY OF VALID CERTIFICATE OF OCCUPANCY</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">CERTIFIED TRUE COPY OF VALID CERTIFICATE OF OCCUPANCY</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">ASSESSMENT OF BUSINESS PERMIT FEE/ TAX ASSESSMENT BILL FROM BPLO</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">ASSESSMENT OF BUSINESS PERMIT FEE/ TAX ASSESSMENT BILL FROM BPLO</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">AFFIDAVIT OF UNDERTAKING THAT THERE WAS NO SUBSTANTIAL CHANGES MADE ON BUILDING/ESTABLISHMENT</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">AFFIDAVIT OF UNDERTAKING THAT THERE WAS NO SUBSTANTIAL CHANGES MADE ON BUILDING/ESTABLISHMENT</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">COPY OF FIRE INSURANCE (IF NECESSARY)</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">COPY OF FIRE INSURANCE (IF NECESSARY)</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
                                 <div class="form-group col-md-20 m-t-20">
                                     <a href="request.php"><button type="button" class="float-right d-none d-sm-inline-block btn btn-sm btn-danger">

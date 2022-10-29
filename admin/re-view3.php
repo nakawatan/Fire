@@ -87,21 +87,21 @@ if ($result) {
                                 </li>
                             </ul>
                             <div class="card-body">
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">ASSESSMENT OF THE BUSINESS PERMIT FEE/TAX ASSESSMENT BILL FROM BPLO</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">ASSESSMENT OF THE BUSINESS PERMIT FEE/TAX ASSESSMENT BILL FROM BPLO</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">COPY OF FIRE INSURANCE (IF NECESSARY)</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">COPY OF FIRE INSURANCE (IF NECESSARY)</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">ONE (1) SET OF FIRE SAFETY MAINTENANCE REPORT (FSMR) (IF  NECESSARY)</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">ONE (1) SET OF FIRE SAFETY MAINTENANCE REPORT (FSMR) (IF  NECESSARY)</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">FIRE SAFETY CLEARANCE FOR WELDING, CUTTING AND OTHER HOT WORK OPERATIONS (IF REQUIRED)</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">FIRE SAFETY CLEARANCE FOR WELDING, CUTTING AND OTHER HOT WORK OPERATIONS (IF REQUIRED)</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
                                 <div class="form-group col-md-20 m-t-20">
                                     <a href="request.php"><button type="button" class="float-right d-none d-sm-inline-block btn btn-sm btn-danger">

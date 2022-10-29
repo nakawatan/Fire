@@ -90,6 +90,4 @@ if (isset($_POST['update'])) {
                             </form>
                         </div>
                     </div>
-                </div>
-                <!-- /.container-fluid -->
 <?php include ('footer.php');?>

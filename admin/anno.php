@@ -7,7 +7,7 @@ include ('topbar.php');
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mb-4" style="font-size: 14px;">
                         <div class="card-header py-3">
                           <a href="anno-create.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary"><i class="fas fa-bullhorn"></i> Add New Announcement</button></a>
                         </div>
@@ -43,9 +43,9 @@ include ('topbar.php');
                                                     <td><?php echo $row['detail']; ?></td>
                                                     <td><?php echo $row['date']; ?></td>
                                                     <td><a href="anno-edit.php?updateid=<?php echo $row['id'];?>" 
-                                                        class="btn btn-success"><i class="fas fa-pen-square"></i></a>
+                                                        class="d-none d-sm-inline-block btn btn-sm btn btn-success"><i class="fas fa-pen-square"></i></a>
                                                         <a href="anno-delete.php?deleteid=<?php echo $row['id'];?>" 
-                                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                        class="d-none d-sm-inline-block btn btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                 </tr>
                                         <?php

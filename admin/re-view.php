@@ -70,7 +70,7 @@ if ($result) {
                         </div>
                     </div>
 
-                    <div class="card shadow mb-4" style="font-size: 15px;">
+                    <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary" style="text-align: center;">DOCUMENTARY REQUIREMENTS </h6>
                         </div>
@@ -87,25 +87,25 @@ if ($result) {
                                 </li>
                             </ul>
                             <div class="card-body">
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">ENDORSEMENT FROM OFFICE OF THE BUILDING OFFICIAL (OBO)</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div  class="small font-weight-bold col-sm-8">ENDORSEMENT FROM OFFICE OF THE BUILDING OFFICIAL (OBO)</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">CERTIFICATE OF COMPLETION </h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div  class="small font-weight-bold col-sm-8">CERTIFICATE OF COMPLETION </div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">CERTIFIED TRUE COPY OF ASSESSMENT FEE FOR SECURING CERTIFICATE OF OCCUPANCY FROM OBO</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">CERTIFIED TRUE COPY OF ASSESSMENT FEE FOR SECURING CERTIFICATE OF OCCUPANCY FROM OBO</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">AS-BUILT PLAN (IF NECESSARY)</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">AS-BUILT PLAN (IF NECESSARY)</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
-                                <div class="form-group col-md-20 m-t-20">
-                                    <h4 class="small font-weight-bold">ONE (1) SET OF FIRE SAFETY COMPLIANCE AND COMMISSIONING REPORT (FSCCR) (IF NECESSARY)</h4>
-                                    <input type="file" name="image" class="form-control" value="" style="font-size: 13px;">
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">ONE (1) SET OF FIRE SAFETY COMPLIANCE AND COMMISSIONING REPORT (FSCCR) (IF NECESSARY)</div>
+                                    <div class="col-sm-4">col-sm-4</div>
                                 </div>
                                 <div class="form-group col-md-20 m-t-20">
                                     <a href="request.php"><button type="button" class="float-right d-none d-sm-inline-block btn btn-sm btn-danger">

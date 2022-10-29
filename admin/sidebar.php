@@ -42,16 +42,16 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="#">Compliant</a>
-                        <a class="collapse-item" href="#">Non Compliant</a>
+                        <a class="collapse-item" href="com.php">Compliant</a>
+                        <a class="collapse-item" href="non-com.php">Non Compliant</a>
                     </div>
                 </div>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="approved.php">
                     <i class="fas fa-thumbs-up"></i>
-                    <span>Approval</span></a>
+                    <span>Approved</span></a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -78,7 +78,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="user.php">User</a>
-                        <a class="collapse-item" href="client.php">Client</a>
                     </div>
                 </div>
             </li>

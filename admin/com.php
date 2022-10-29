@@ -9,7 +9,7 @@ include ('topbar.php');
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4" style="font-size: 13px;">
                         <div class="card-header py-3">
-                          <div class="pull-left m-0 font-weight-bold text-primary" style="text-align: center; font-size: 15px;">FIRE SAFETY INSPECTION CERTIFICATE APPLICATION FORM OF CLIENT</div>
+                          <div class="pull-left m-0 font-weight-bold text-primary" style="font-size: 15px;">Compliant</div>
                         </div>
                         
                         <div class="card-body">
@@ -19,10 +19,10 @@ include ('topbar.php');
                                         <tr>
                                             <th>Application Number</th>
                                             <th>Name of Owner</th>
-                                            <th>Establishment Name</th>
                                             <th>Date</th>
                                             <th>Contact</th>
                                             <th>Address</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -36,18 +36,26 @@ include ('topbar.php');
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 $appnum=$row['appnum'];
                                                 $nowner=$row['nowner'];
-                                                $esname=$row['esname'];
                                                 $date=$row['date'];
                                                 $contact=$row['contact'];
                                                 $address=$row['address'];
+                                                $status=$row['status'];
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $row['appnum']; ?></td>
                                                     <td><?php echo $row['nowner']; ?></td>
-                                                    <td><?php echo $row['esname']; ?></td>
                                                     <td><?php echo date("F d, Y",strtotime($date)) ?></td>
                                                     <td><?php echo $row['contact']; ?></td>
                                                     <td><?php echo $row['address']; ?></td>
+                                                    <td><?php 
+                                                            if ($row['status'] == "Compliant") {
+                                                                echo "<span class='badge badge-success'>Compliant</span>";
+                                                            }
+                                                            else{
+                                                                echo "<span class='badge badge-danger'>Non Compliant</span>";
+                                                            }
+                                                        ?>
+                                                    </td>
                                                     <td><button type="button" class="btn btn-default btn-sm btn-flat border-info wave-effect text-info dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action</button>
                                                         <div class="dropdown-menu text-center">
                                                             <a href="re-view.php?updateid=<?php echo $row['nowner'];?>" 
@@ -55,9 +63,6 @@ include ('topbar.php');
                                                             <a href="staff-edit.php?updateid=<?php echo $row['nowner'];?>" 
                                                             class="d-none d-sm-inline-block btn btn-sm text-white btn bg-secondary" data-toggle="modal" 
                                                             data-target="#Status"><i class="fas fa-lightbulb"></i></a>
-                                                            <a href="staff-edit.php?updateid=<?php echo $row['nowner'];?>" 
-                                                            class="d-none d-sm-inline-block btn btn-sm btn btn-success" data-toggle="modal" 
-                                                            data-target="#AppNumber"><i class="fas fa-pen-square"></i></a>
                                                             <a href="re-delete.php?deleteid=<?php echo $row['nowner'];?>" 
                                                             class="d-none d-sm-inline-block btn btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                                         </div>
@@ -81,6 +86,7 @@ include ('topbar.php');
                                                                             <option></option>
                                                                             <option>Compliant</option>
                                                                             <option>Non Compliant</option>
+                                                                            <option>Approved</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
