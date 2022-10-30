@@ -72,7 +72,7 @@ if (isset($_POST['update'])) {
                     </div>
                     <?php } ?>
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mb-4" style="font-size: 15px;">
                         <div class="card-header py-3">
                           <div class="pull-left m-0 font-weight-bold text-primary"> Add New User</div>
                         </div>
@@ -82,7 +82,7 @@ if (isset($_POST['update'])) {
 				                        <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-4">
-                        <div class="card">
+                        <div class="card" style="font-size: 15px;">
                             <div class="card-body">
                                 <center class="m-t-30">
                                     <img src="<?php echo "img/".$row['image']?>" class="img-circle" width="150" />
@@ -94,16 +94,10 @@ if (isset($_POST['update'])) {
                             <div class="card-body"> <small class="text-muted">Email address </small>
                                 <h6><?php echo $email; ?></h6> <small class="text-muted p-t-30 db">Phone</small>
                                 <h6><?php echo $cont; ?></h6> 
-                                <small class="text-muted p-t-30 db">Social Profile</small>
-                                <br/>
-                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-skype"></i></a>
-                                <a class="btn btn-circle btn-secondary" href="" target="_blank"><i class="fa fa-google"></i></a>
                             </div>
                         </div>                                                    
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8" style="font-size: 15px;">
                             <form class="row" method="post" enctype="multipart/form-data">
                                 <div class="form-group col-md-3 m-t-20">
                                     <label>Name</label>
@@ -157,8 +151,8 @@ if (isset($_POST['update'])) {
                                 </div>
                                 <div class="form-actions col-md-12">
                                     <input type="hidden" name="emid" value="Soy1332">
-				                    <button type="submit" class="btn btn-success" name="update"> <i class="fa fa-check"></i>Update</button>
-				                    <a href="user.php"><button type="button" class="btn btn-danger">Cancel</button></a>
+				                    <button type="submit" class="d-none d-sm-inline-block btn btn-sm text-white btn btn-success" name="update"> <i class="fa fa-check"></i>Update</button>
+				                    <a href="user.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm text-white btn btn-danger">Cancel</button></a>
 				                </div>
 				            </form>
                         </div>

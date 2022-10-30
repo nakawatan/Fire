@@ -8,13 +8,13 @@ include ('topbar.php');
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mb-4" style="font-size: 15px;">
                         <div class="card-header py-3">
-                          <div class="pull-left m-0 font-weight-bold text-primary"> Users
-                          <a href="user-create.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary">Add New User</button></a>
+                           <div class="pull-left m-0 font-weight-bold text-primary"> Users
+                             <a href="user-create.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary">Add New User</button></a>
+                          </div>
                         </div>
-                        </div>
-                        <div class="card-body">
+                        <div class="card-body" style="font-size: 15px;">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -56,9 +56,9 @@ include ('topbar.php');
                                                         ?>
                                                     </td>
                                                     <td><a href="user-edit.php?updateid=<?php echo $row['id'];?>" 
-                                                        class="btn btn-success"><i class="fas fa-pen-square"></i></a>
+                                                        class="d-none d-sm-inline-block btn btn-sm text-white btn btn-success"><i class="fas fa-pen-square"></i></a>
                                                         <a href="user-delete.php?deleteid=<?php echo $row['id'];?>" 
-                                                        class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                        class="d-none d-sm-inline-block btn btn-sm text-white btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                 </tr>
                                         <?php

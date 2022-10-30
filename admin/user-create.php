@@ -37,11 +37,11 @@ if (isset($_POST['create'])) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mb-4" style="font-size: 15px;">
                         <div class="card-header py-3">
                           <div class="pull-left m-0 font-weight-bold text-primary"> Add New User</div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="font-size: 15px;">
                                 <form class="row" method="post" enctype="multipart/form-data">
                                     <div class="form-group col-md-3 m-t-20">
                                         <label>Name</label>
@@ -92,12 +92,10 @@ if (isset($_POST['create'])) {
                                         <input type="file" name="image" class="form-control" value=""> 
                                     </div>
                                     <div class="form-actions col-md-12">
-                                        <button type="submit" class="btn btn-primary" name="create"> <i class="fa fa-check"></i>Save</button>
-                                        <a href="user.php"><button type="button" class="btn btn-danger">Cancel</button></a>
+                                        <button type="submit" class="d-none d-sm-inline-block btn btn-sm text-white btn btn-primary" name="create"> <i class="fa fa-check"></i>Save</button>
+                                        <a href="user.php"><button type="button" class="d-none d-sm-inline-block btn btn-sm text-white btn btn-danger">Cancel</button></a>
                                     </div>
                                 </form>
                         </div>
                     </div>
-                </div>
-                <!-- /.container-fluid -->
 <?php include ('footer.php');?>

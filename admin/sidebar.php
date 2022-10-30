@@ -48,12 +48,6 @@
                 </div>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="approved.php">
-                    <i class="fas fa-thumbs-up"></i>
-                    <span>Approved</span></a>
-            </li>
-
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="request.php">

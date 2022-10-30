@@ -7,7 +7,7 @@ include ('topbar.php');
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4" style="font-size: 13px;">
+                    <div class="card shadow mb-4" style="font-size: 15px;">
                         <div class="card-header py-3">
                           <div class="pull-left m-0 font-weight-bold text-primary" style="font-size: 15px;">Non Compliant</div>
                         </div>
@@ -19,7 +19,7 @@ include ('topbar.php');
                                         <tr>
                                             <th>Application Number</th>
                                             <th>Name of Owner</th>
-                                            <th>Date</th>
+                                            <th>Date Sent</th>
                                             <th>Contact</th>
                                             <th>Address</th>
                                             <th>Status</th>
@@ -52,20 +52,16 @@ include ('topbar.php');
                                                                 echo "<span class='badge badge-success'>Compliant</span>";
                                                             }
                                                             else{
-                                                                echo "<span class='badge badge-danger'>Non Compliant</span>";
+                                                                echo "<span class='badge badge-danger'>Declined</span>";
                                                             }
                                                         ?>
                                                     </td>
-                                                    <td><button type="button" class="btn btn-default btn-sm btn-flat border-info wave-effect text-info dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action</button>
-                                                        <div class="dropdown-menu text-center">
-                                                            <a href="re-view.php?updateid=<?php echo $row['nowner'];?>" 
-                                                            class="d-none d-sm-inline-block btn btn-sm text-white btn bg-info"><i class="fas fa-eye"></i></a>
-                                                            <a href="staff-edit.php?updateid=<?php echo $row['nowner'];?>" 
-                                                            class="d-none d-sm-inline-block btn btn-sm text-white btn bg-secondary" data-toggle="modal" 
-                                                            data-target="#Status"><i class="fas fa-lightbulb"></i></a>
-                                                            <a href="re-delete.php?deleteid=<?php echo $row['nowner'];?>" 
-                                                            class="d-none d-sm-inline-block btn btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                                                        </div>
+                                                    <td>
+                                                        <a href="#=<?php echo $row['nowner'];?>" 
+                                                        class="d-none d-sm-inline-block btn btn-sm text-white btn bg-info" data-toggle="modal" 
+                                                        data-target="#Status"><i class="fas fa-lightbulb"></i></a>
+                                                        <a href="re-view.php?updateid=<?php echo $row['nowner'];?>" 
+                                                        class="d-none d-sm-inline-block btn btn-sm text-white btn bg-dark"><i class="fas fa-eye"></i></a>
                                                     </td>
                                                 </tr>
 
@@ -85,8 +81,7 @@ include ('topbar.php');
                                                                         <select class="form-control select2" style="font-size: 15px;" id="exampleSelect1" name="status">
                                                                             <option></option>
                                                                             <option>Compliant</option>
-                                                                            <option>Non Compliant</option>
-                                                                            <option>Approved</option>
+                                                                            <option>Declined</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
