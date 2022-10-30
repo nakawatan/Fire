@@ -80,6 +80,4 @@ if (isset($_POST['create'])) {
                         </div>
                         
                     </div>
-                        
-                </div>
 <?php include ('footer.php');?>
