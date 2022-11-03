@@ -22,7 +22,6 @@ include ('topbar.php');
                                             <th>Date Approved</th>
                                             <th>Contact</th>
                                             <th>Address</th>
-                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -39,7 +38,6 @@ include ('topbar.php');
                                                 $date=$row['date'];
                                                 $contact=$row['contact'];
                                                 $address=$row['address'];
-                                                $status=$row['status'];
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $row['appnum']; ?></td>
@@ -47,22 +45,9 @@ include ('topbar.php');
                                                     <td><?php echo date("F d, Y",strtotime($date)) ?></td>
                                                     <td><?php echo $row['contact']; ?></td>
                                                     <td><?php echo $row['address']; ?></td>
-                                                    <td><?php 
-                                                            if ($row['status'] == "For Pick up") {
-                                                                echo "<span class='badge badge-success'>For Pick up</span>";
-                                                            }
-                                                            else{
-                                                                echo "<span class='badge badge-warning'>Processing</span>";
-                                                            }
-                                                            
-                                                        ?>
-                                                    </td>
                                                     <td>
-                                                        <a href="staff-edit.php?updateid=<?php echo $row['nowner'];?>" 
-                                                        class="d-none d-sm-inline-block btn btn-sm text-white btn bg-info" data-toggle="modal" 
-                                                        data-target="#Status"><i class="fas fa-lightbulb"></i></a>
                                                         <a href="#=<?php echo $row['nowner'];?>" 
-                                                        class="d-none d-sm-inline-block btn btn-sm btn btn-success"><i class="fas fa-print"></i></a>
+                                                        class="d-none d-sm-inline-block btn btn-sm btn btn-success"><i class="fas fa-print"></i> PRINT</a>
                                                        
                                                     </td>
                                                 </tr>

@@ -22,7 +22,6 @@ include ('topbar.php');
                                             <th>Date Sent</th>
                                             <th>Contact</th>
                                             <th>Address</th>
-                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -39,7 +38,6 @@ include ('topbar.php');
                                                 $date=$row['date'];
                                                 $contact=$row['contact'];
                                                 $address=$row['address'];
-                                                $status=$row['status'];
                                                 ?>
                                                 <tr>
                                                     <td><?php echo $row['appnum']; ?></td>
@@ -47,21 +45,9 @@ include ('topbar.php');
                                                     <td><?php echo date("F d, Y",strtotime($date)) ?></td>
                                                     <td><?php echo $row['contact']; ?></td>
                                                     <td><?php echo $row['address']; ?></td>
-                                                    <td><?php 
-                                                            if ($row['status'] == "Compliant") {
-                                                                echo "<span class='badge badge-success'>Compliant</span>";
-                                                            }
-                                                            else{
-                                                                echo "<span class='badge badge-danger'>Declined</span>";
-                                                            }
-                                                        ?>
-                                                    </td>
                                                     <td>
-                                                        <a href="#=<?php echo $row['nowner'];?>" 
-                                                        class="d-none d-sm-inline-block btn btn-sm text-white btn bg-info" data-toggle="modal" 
-                                                        data-target="#Status"><i class="fas fa-lightbulb"></i></a>
                                                         <a href="re-view.php?updateid=<?php echo $row['nowner'];?>" 
-                                                        class="d-none d-sm-inline-block btn btn-sm text-white btn bg-dark"><i class="fas fa-eye"></i></a>
+                                                        class="d-none d-sm-inline-block btn btn-sm text-white btn bg-info"><i class="fas fa-eye"></i> VIEW</a>
                                                     </td>
                                                 </tr>
 

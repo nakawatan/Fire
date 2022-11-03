@@ -42,10 +42,13 @@ include ('topbar.php');
                                                     <td><?php echo $row['title']; ?></td>
                                                     <td><?php echo $row['detail']; ?></td>
                                                     <td><?php echo $row['date']; ?></td>
-                                                    <td><a href="anno-edit.php?updateid=<?php echo $row['id'];?>" 
-                                                        class="d-none d-sm-inline-block btn btn-sm btn btn-success"><i class="fas fa-pen-square"></i></a>
-                                                        <a href="anno-delete.php?deleteid=<?php echo $row['id'];?>" 
-                                                        class="d-none d-sm-inline-block btn btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                    <td><button type="button" class="btn btn-default btn-sm btn-flat border-info wave-effect text-info dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action</button>
+                                                        <div class="dropdown-menu text-center">
+                                                            <a href="anno-edit.php?updateid=<?php echo $row['id'];?>" 
+                                                            class="d-none d-sm-inline-block btn btn-sm btn btn-success"><i class="fas fa-pen-square"></i></a>
+                                                            <a href="anno-delete.php?deleteid=<?php echo $row['id'];?>" 
+                                                            class="d-none d-sm-inline-block btn btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                        </div>    
                                                     </td>
                                                 </tr>
                                         <?php
