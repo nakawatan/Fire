@@ -28,7 +28,7 @@ include ('topbar.php');
                                     <tbody>
                                         <?php
                                         
-                                        $sql = "SELECT * FROM `record` ORDER BY id DESC";
+                                        $sql = "SELECT * FROM `record` WHERE `status` = 'Non Compliant' ORDER BY id DESC";
                                         $result = mysqli_query($con,$sql);
                                         $i=1;
                                         if ($result) {
@@ -46,7 +46,7 @@ include ('topbar.php');
                                                     <td><?php echo $row['contact']; ?></td>
                                                     <td><?php echo $row['address']; ?></td>
                                                     <td>
-                                                        <a href="re-view.php?updateid=<?php echo $row['nowner'];?>" 
+                                                        <a href="re-view.php?updateid=<?php echo $row['id'];?>" 
                                                         class="d-none d-sm-inline-block btn btn-sm text-white btn bg-info"><i class="fas fa-eye"></i> VIEW</a>
                                                     </td>
                                                 </tr>

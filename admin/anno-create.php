@@ -39,7 +39,7 @@ if (isset($_POST['create'])) {
                         <div class="card-body">
                                 <form class="row" method="post" enctype="multipart/form-data">
                                     <div class="form-group col-md-12 ">
-                                        <label>Titel</label>
+                                        <label>Title</label>
                                         <input type="text" name="title" class="form-control form-control-line" placeholder="" required > 
                                     </div>
                                     <div class="form-group col-md-12">

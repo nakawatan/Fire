@@ -3,8 +3,13 @@ include 'db/db_con.php';
 include ('header.php');
 include ('sidebar.php');
 include ('topbar.php');
+$root = dirname(__FILE__, 2);
+include_once $root.'/classes/new_business_doc.php';
+include_once $root.'/classes/renewal_business_doc.php';
+include_once $root.'/classes/occupancy_docs.php';
                                         
-$sql = "SELECT * FROM `record` ORDER BY id DESC";
+$id = $_REQUEST['updateid'];
+$sql = "SELECT * FROM `record` where id = ".$id." ORDER BY id DESC";
 $result = mysqli_query($con,$sql);
 $i=1;
 if ($result) {
@@ -76,37 +81,105 @@ if ($result) {
                         </div>
                         <div class="card-body">
                             <ul class="nav nav-pills nav-justified">
+                                <?php if($row['type'] == 1){ ?>
                                 <li class="nav-item">
-                                    <a class="nav-link bg-primary m-0 font-weight-bold text-white" href="re-view.php">FSIC FOR CERTIFICATE OF OCCUPANCY</a>
+                                    <a class="nav-link bg-primary m-0 font-weight-bold text-white" href="#">FSIC FOR CERTIFICATE OF OCCUPANCY</a>
                                 </li>
+                                <?php } ?>
+                                <?php if($row['type'] == 2){ ?>
                                 <li class="nav-item">
-                                    <a class="nav-link m-0 font-weight-bold text-warning" href="re-view2.php">FOR NEW BUSINESS</a>
+                                    <a class="nav-link m-0 font-weight-bold text-warning" href="#">FOR NEW BUSINESS</a>
                                 </li>
+                                <?php } ?>
+                                <?php if($row['type'] == 3){ ?>
                                 <li class="nav-item">
-                                    <a class="nav-link m-0 font-weight-bold text-info" href="re-view3.php">FOR RENEWAL  OF BUSINESS</a>
+                                    <a class="nav-link m-0 font-weight-bold text-info" href="#">FOR RENEWAL  OF BUSINESS</a>
                                 </li>
+                                <?php } ?>
                             </ul>
+                            <?php 
+                                if($row['type'] == 1){
+                                    $obj = new OccupancyDocs();
+                                    $obj->record_id = $row['id'];
+                                    $objs = $obj->get_records();
+                                    $objs = $objs[0];
+                                
+                            ?>
                             <div class="card-body">
                                 <div class="form-group row">
                                     <div  class="small font-weight-bold col-sm-8">ENDORSEMENT FROM OFFICE OF THE BUILDING OFFICIAL (OBO)</div>
-                                    <div class="col-sm-4">col-sm-4</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['obo_endoursement']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div  class="small font-weight-bold col-sm-8">CERTIFICATE OF COMPLETION </div>
-                                    <div class="col-sm-4">col-sm-4</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['certificate_of_completion']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">CERTIFIED TRUE COPY OF ASSESSMENT FEE FOR SECURING CERTIFICATE OF OCCUPANCY FROM OBO</div>
-                                    <div class="col-sm-4">col-sm-4</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['assessment_fee']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">AS-BUILT PLAN (IF NECESSARY)</div>
-                                    <div class="col-sm-4">col-sm-4</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['as_built_plan']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">ONE (1) SET OF FIRE SAFETY COMPLIANCE AND COMMISSIONING REPORT (FSCCR) (IF NECESSARY)</div>
-                                    <div class="col-sm-4">col-sm-4</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['fsccr']; ?>"></img></div>
                                 </div>
+                                <?php } ?>
+
+                                <?php 
+                                if($row['type'] == 2){
+                                    $obj = new NewBusinessDoc();
+                                    $obj->record_id = $row['id'];
+                                    $objs = $obj->get_records();
+                                    $objs = $objs[0];
+                                
+                                ?>
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">CERTIFIED TRUE COPY OF VALID CERTIFICATE OF OCCUPANCY</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['certificate_of_occupancy']; ?>"></img></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">ASSESSMENT OF BUSINESS PERMIT FEE/ TAX ASSESSMENT BILL FROM BPLO</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['business_permit_fee']; ?>"></img></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">AFFIDAVIT OF UNDERTAKING THAT THERE WAS NO SUBSTANTIAL CHANGES MADE ON BUILDING/ESTABLISHMENT</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['appidavit_of_undertaking']; ?>"></img></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">COPY OF FIRE INSURANCE (IF NECESSARY)</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['fire_insurance']; ?>"></img></div>
+                                </div>
+                                <?php } ?>
+
+                                <?php 
+                                if($row['type'] == 3){
+                                    $obj = new RenewalBusinessDoc();
+                                    $obj->record_id = $row['id'];
+                                    $objs = $obj->get_records();
+                                    $objs = $objs[0];
+                                
+                                ?>
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">ASSESSMENT OF THE BUSINESS PERMIT FEE/TAX ASSESSMENT BILL FROM BPLO</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['business_permit_fee']; ?>"></img></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">COPY OF FIRE INSURANCE (IF NECESSARY)</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['fire_insurance']; ?>"></img></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">ONE (1) SET OF FIRE SAFETY MAINTENANCE REPORT (FSMR) (IF  NECESSARY)</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['fsmr']; ?>"></img></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="small font-weight-bold col-sm-8">FIRE SAFETY CLEARANCE FOR WELDING, CUTTING AND OTHER HOT WORK OPERATIONS (IF REQUIRED)</div>
+                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['fire_safety_clearance']; ?>"></img></div>
+                                </div>
+                                <?php } ?>
+
                                 <div class="form-group col-md-20 m-t-20">
                                     <a href="request.php"><button type="button" class="float-right d-none d-sm-inline-block btn btn-sm btn-danger">
                                     Back</button></a>

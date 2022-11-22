@@ -26,7 +26,7 @@
 <?php 
 session_start();
 
-if (isset($_SESSION['username']) && isset($_SESSION['password'])) { 
+if (isset($_SESSION['username'])) { 
 }else{
     header("Location: login.php");
     exit();

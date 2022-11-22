@@ -22,23 +22,17 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 		header("Location: login.php?error=Password is required");
         exit();
     }else{
-        $sql = "SELECT * FROM `user` WHERE username='$uname' AND password='$password'";
+        $sql = "SELECT * FROM `user` WHERE username='$uname' AND password= md5('$password')";
 
         $result =mysqli_query($con, $sql);
 
         if (mysqli_num_rows($result) === 1) {
             $row = mysqli_fetch_assoc($result);
-            if ($row['username'] === $uname && $row['password'] === $password) {
-                $_SESSION['username'] = $uname;
-                $_SESSION['password'] = $password;
-                $_SESSION['name'] = $name;
-				header("Location: index.php");
-                exit();
-              
-            }else{
-            header("Location: login.php?error=Incorect Email or Password");
-            exit();
-            }
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['name'] = $row['name'];
+            $_SESSION['id'] =$row['id'];
+            $_SESSION['type'] = "1";
+            header("Location: index.php");
 
         }else{
             header("Location: login.php?error=Incorect Email or Password");

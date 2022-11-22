@@ -28,7 +28,7 @@ include ('topbar.php');
                                     <tbody>
                                         <?php
                                         
-                                        $sql = "SELECT * FROM `record` ORDER BY id DESC";
+                                        $sql = "SELECT * FROM `record` WHERE `status` = 'Compliant' ORDER BY id DESC";
                                         $result = mysqli_query($con,$sql);
                                         $i=1;
                                         if ($result) {

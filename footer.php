@@ -57,11 +57,63 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
+    <!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
+    <script>
+        // script needed by the system for global userDropdown
+        // set interval if 5 seconds to fetch notifications
+        setInterval(function () {
+            $.ajax({
+                url: '/api/',
+                data: {
+                    method:"get_notification_count"
+                },
+                method: 'POST',
+                dataType:"json",
+                success: function(response) {
+                    if (response.status == "ok"){
+                        $('.badge-counter').text(response.count);
+                    }
+                }
+            });
+        }, 5000);
+
+        $('.notification-clicker').on('click',function(){
+            $.ajax({
+                url: '/api/',
+                data: {
+                    method:"get_notifications"
+                },
+                method: 'POST',
+                dataType:"json",
+                success: function(response) {
+                    $('.notification-list').empty();
+                    $.each(response.records,function(k,v){
+                        $('.notification-list').append(
+                            $("<a>").addClass('dropdown-item d-flex align-items-center').attr('href','#')
+                            .append(
+                                $('<div>').addClass('mr-3')
+                                .append(
+                                    $('<div>').addClass('icon-circle bg-primary')
+                                    .append(
+                                        $('<i>').addClass('fas fa-file-alt text-white')
+                                    )
+                                ),
+                                $('<div>').append(
+                                    $('<div>').addClass('small text-gray-500').text(v.date),
+                                    $('<div>').addClass('font-weight-bold').text(v.message)
+                                )
+                            )
+                        )
+                    })
+                }
+            });
+        });
+    </script>
 
 </body>
 

@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
 </head>
 
@@ -73,12 +74,11 @@
                                         </div>
                                         <button class="btn btn-user btn-primary btn-block" >Login</button>
                                         <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
+                                        <div id="g_id_onload"
+                                            data-client_id="604330538667-7dui7fgm950clhlr6tfnurq6gigbnlro.apps.googleusercontent.com"
+                                            data-callback="onSignIn">
+                                        </div>
+                                        <div class="g_id_signin" data-type="standard"></div>
                                     </form>
                                     <hr>
                                     <div class="text-center">
@@ -105,7 +105,53 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script>
+        function parseJwt (token) {
+                var base64Url = token.split('.')[1];
+                var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
 
+                return JSON.parse(jsonPayload);
+            }
+            function onSignIn(googleUser) {
+                jwt = parseJwt(googleUser.credential);
+                console.log(jwt);
+                $.ajax({
+                    url: '/api/',
+                    data: {
+                        method:"check_client",
+                        email:jwt.email
+                    },
+                    method: 'POST',
+                    dataType:"json",
+                    success: function(response) {
+                        if (!response.exist) {
+                            $.ajax({
+                                url: '/api/',
+                                data: {
+                                    method:"login_client",
+                                    email:jwt.email,
+                                    name:jwt.name,
+                                    username:jwt.email,
+                                    password:+new Date + ""
+                                },
+                                method: 'POST',
+                                dataType:"json",
+                                success: function(response) {
+                                    if(response.status == "ok"){
+                                        // window.location.href="/index.php";
+                                    }
+                                }
+                            });
+                        }else {
+                            window.location.href="/index.php";
+                        }
+                    }
+                });
+            }
+    </script>
 </body>
 
 </html>

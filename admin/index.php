@@ -25,7 +25,7 @@ include ('topbar.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">78</div>
+                                            <div class="all-request h5 mb-0 font-weight-bold text-gray-800">78</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-envelope-open-text fa-2x text-gray-300"></i>
@@ -43,7 +43,7 @@ include ('topbar.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                                 Declined</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">30</div>
+                                            <div class="declined-request h5 mb-0 font-weight-bold text-gray-800">30</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-spinner fa-2x text-gray-300"></i>
@@ -61,7 +61,7 @@ include ('topbar.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                             Processing</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            <div class="pending-request h5 mb-0 font-weight-bold text-gray-800">18</div>
                                         </div>
                                         <div class="col-auto">
                                           <i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
@@ -79,7 +79,7 @@ include ('topbar.php');
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Finished</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            <div class="finished-request h5 mb-0 font-weight-bold text-gray-800">18</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-check-circle fa-2x text-gray-300"></i>
@@ -107,4 +107,20 @@ include ('topbar.php');
                         </div>
                     </div>
 <?php include ('footer.php');?>
+<script>
+    $.ajax({
+        url: '/api/',
+        data: {
+            method:"get_metrics"
+        },
+        method: 'POST',
+        dataType:"json",
+        success: function(response) {
+            $('.all-request').text(response.metrics.records);
+            $('.declined-request').text(response.metrics.declined);
+            $('.pending-request').text(response.metrics.processing);
+            $('.finished-request').text(response.metrics.finish);
+        }
+    });
+</script>
             
