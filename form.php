@@ -54,6 +54,8 @@ if (isset($_POST['create'])) {
         $doc->UploadFile();
         $doc->save();
     }
+
+        echo "<script>window.location.href='index.php'</script>";
     
     // $sql = "INSERT INTO `record`(`nowner`, `esname`, `autho`, `address`, `bnature`, `area`, `contact`, `date`) 
     // VALUES   ('$nowner', '$esname', '$autho', '$address', '$bnature', '$area', '$contact', '$date')";
