@@ -7,6 +7,10 @@ include_once ('classes/record.php');
 include_once ('classes/occupancy_docs.php');
 include_once ('classes/new_business_doc.php');
 include_once ('classes/renewal_business_doc.php');
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 if (isset($_POST['create'])) {
     $record = new Record();
     $nowner=$_POST['nowner'];
@@ -113,7 +117,7 @@ if (isset($_POST['create'])) {
                                         </div>
                                         <div class="form-group col-md-6 m-t-20">
                                             <label>Contact Number:</label>
-                                            <input type="text" name="contact" class="form-control form-control-line" minlength="12" maxlength="12" required > 
+                                            <input type="text" name="contact" class="form-control form-control-line" minlength="11" maxlength="12" required > 
                                         </div>
                                         <div class="form-group col-md-6 m-t-20">
                                             <label>Date:</label>

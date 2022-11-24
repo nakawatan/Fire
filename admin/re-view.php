@@ -24,6 +24,19 @@ if ($result) {
         $contact=$row['contact'];
         $date=$row['date'];
 ?>
+<style>
+img{
+    transition: transform .2s;
+    width:250px;
+    margin:0 auto;
+    background-color: rgb(173, 173, 237);
+    border-radius: 10px;
+    border: 1px solid black;
+}
+img:hover{
+    transform:scale(2.5);
+}
+</style>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
    
@@ -108,23 +121,23 @@ if ($result) {
                             <div class="card-body">
                                 <div class="form-group row">
                                     <div  class="small font-weight-bold col-sm-8">ENDORSEMENT FROM OFFICE OF THE BUILDING OFFICIAL (OBO)</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['obo_endoursement']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['obo_endoursement']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div  class="small font-weight-bold col-sm-8">CERTIFICATE OF COMPLETION </div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['certificate_of_completion']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['certificate_of_completion']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">CERTIFIED TRUE COPY OF ASSESSMENT FEE FOR SECURING CERTIFICATE OF OCCUPANCY FROM OBO</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['assessment_fee']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['assessment_fee']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">AS-BUILT PLAN (IF NECESSARY)</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['as_built_plan']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['as_built_plan']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">ONE (1) SET OF FIRE SAFETY COMPLIANCE AND COMMISSIONING REPORT (FSCCR) (IF NECESSARY)</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['fsccr']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['fsccr']; ?>"></img></div>
                                 </div>
                                 <?php } ?>
 
@@ -138,19 +151,19 @@ if ($result) {
                                 ?>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">CERTIFIED TRUE COPY OF VALID CERTIFICATE OF OCCUPANCY</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['certificate_of_occupancy']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['certificate_of_occupancy']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">ASSESSMENT OF BUSINESS PERMIT FEE/ TAX ASSESSMENT BILL FROM BPLO</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['business_permit_fee']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['business_permit_fee']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">AFFIDAVIT OF UNDERTAKING THAT THERE WAS NO SUBSTANTIAL CHANGES MADE ON BUILDING/ESTABLISHMENT</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['appidavit_of_undertaking']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['appidavit_of_undertaking']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">COPY OF FIRE INSURANCE (IF NECESSARY)</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['fire_insurance']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['fire_insurance']; ?>"></img></div>
                                 </div>
                                 <?php } ?>
 
@@ -164,19 +177,19 @@ if ($result) {
                                 ?>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">ASSESSMENT OF THE BUSINESS PERMIT FEE/TAX ASSESSMENT BILL FROM BPLO</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['business_permit_fee']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['business_permit_fee']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">COPY OF FIRE INSURANCE (IF NECESSARY)</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['fire_insurance']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['fire_insurance']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">ONE (1) SET OF FIRE SAFETY MAINTENANCE REPORT (FSMR) (IF  NECESSARY)</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['fsmr']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['fsmr']; ?>"></img></div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="small font-weight-bold col-sm-8">FIRE SAFETY CLEARANCE FOR WELDING, CUTTING AND OTHER HOT WORK OPERATIONS (IF REQUIRED)</div>
-                                    <div class="col-sm-4"><img width="250px" src="<?php echo $objs['fire_safety_clearance']; ?>"></img></div>
+                                    <div class="col-sm-4"><img class='img' width="250px" src="<?php echo $objs['fire_safety_clearance']; ?>"></img></div>
                                 </div>
                                 <?php } ?>
 

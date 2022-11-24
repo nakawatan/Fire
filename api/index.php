@@ -7,6 +7,7 @@
     include $root.'/classes/notification.php';
     include $root.'/classes/record.php';
     include $root.'/classes/user.php';
+    include $root.'/classes/scheduler.php';
     $result["status"] = "ok";
 
     if (isset($_REQUEST['method'])){
@@ -142,6 +143,49 @@
                 $obj->amount = $_REQUEST['amount'];
                 $obj->payment_review_date = $_REQUEST['payment_review_date'];
                 $obj->add_payment();
+                break;
+
+            case "delete_record":
+                $obj = new Record();
+                $obj->id = $_REQUEST['id'];
+                $obj->delete();
+                break;
+
+            case "get_schedules":
+                $obj = new Scheduler();
+
+                $data = [];
+                foreach($obj->get_records() as $rec) {
+                    $arr = array();
+                    $arr['title'] = $rec['title'];
+                    $arr['start'] = date_format(date_create($rec['datetime']),"Y-m-d");
+                    $arr['details'] = htmlspecialchars($rec['details']);
+                    $arr['color'] = "#02a102";
+                    $arr['obj_id'] = $rec['id'];
+                    $data[] = $arr; 
+                }
+
+                $result = $data;
+                break;
+            
+            case "add_schedule":
+                $obj = new Scheduler();
+                $obj->date = $_REQUEST['date'];
+                $obj->title = $_REQUEST['title'];
+                $obj->details = $_REQUEST['details'];
+                $obj->save();
+                break;
+            case "update_schedule":
+                $obj = new Scheduler();
+                $obj->id = $_REQUEST['id'];
+                $obj->title = $_REQUEST['title'];
+                $obj->details = $_REQUEST['details'];
+                $obj->Update();
+                break;
+            case "delete_schedule":
+                $obj = new Scheduler();
+                $obj->id = $_REQUEST['id'];
+                $obj->delete();
                 break;
 
             case "change_admin_password";

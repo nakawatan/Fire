@@ -73,8 +73,8 @@ include ('topbar.php');
                                                             class="d-none d-sm-inline-block btn btn-sm btn btn-warning update-appnum" data-toggle="modal" 
                                                             data-target="#AppNumber"><i class="fas fa-pen-square"></i></a>
 
-                                                            <a href="re-delete.php?deleteid=<?php echo $row['nowner'];?>" 
-                                                            class="d-none d-sm-inline-block btn btn-sm btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                            <a href="#" 
+                                                            class="d-none d-sm-inline-block btn btn-sm btn btn-danger delete-record"><i class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -164,6 +164,31 @@ include ('topbar.php');
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <!-- Modal delete-->
+                                                <div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" style="font-size: 15px;" id="exampleModalLabel">Delete Record</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <div class="col-lg-12"> 
+                                                                        <h3>Are you sure to delete this record?</h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-success delete-record-submit">Delete</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         <?php
                                             }
                                         }
@@ -193,6 +218,27 @@ include ('topbar.php');
                 method:"update_record",
                 id:$(this).attr('data-attr-id'),
                 status:$("#exampleSelect1").val()
+            },
+            method: 'POST',
+            dataType:"json",
+            success: function(response) {
+                window.location.reload();
+            }
+        });
+    });
+
+    $('.delete-record').on('click',function(){
+        data = JSON.parse($(this).parents('tr').attr('data-attr-details'));
+        $('.delete-record-submit').attr('data-attr-id',data.id);
+        $('#delete-modal').modal('show');
+    });
+
+    $('.delete-record-submit').on('click',function(){
+        $.ajax({
+            url: '/api/',
+            data: {
+                method:"delete_record",
+                id:$(this).attr('data-attr-id')
             },
             method: 'POST',
             dataType:"json",

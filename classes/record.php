@@ -24,6 +24,8 @@
         public $client_id;
         public $amount;
         public $payment_review_date;
+        
+        public $email;
 
         function get_records () {
             $db = new DB();
@@ -94,7 +96,7 @@
             $db = new DB();
             $db->connect();
 
-            $sql = "SELECT a.* FROM `record` as a 
+            $sql = "SELECT a.*,b.email FROM `record` as a 
             inner join `client` as b 
             on b.id = a.client_id
             where a.id = ?";
@@ -133,6 +135,7 @@
                         $this->client_id = $row['client_id'];
                         $this->amount = $row['amount'];
                         $this->payment_review_date = $row['payment_review_date'];
+                        $this->email = $row['email'];
                     }
                 // close the result.
                 // mysqli_free_result($result);

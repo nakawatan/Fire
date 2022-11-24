@@ -6,6 +6,13 @@ include_once("classes/record.php");
 include_once("classes/announcement.php");
 $record = new Record();
 $record->client_id = $_SESSION['id'];
+
+if ($_SESSION['type'] == 1) {
+    session_unset();
+    echo "<script>window.location.href='login.php'</script>";
+    exit();
+}
+
 $data = $record->get_records();
 
 $announcement = new Announcement();
@@ -41,11 +48,13 @@ $announcements = $announcement->get_records();
                                                 $count++;
                                             }
                                             $image = "/admin/img/".$rec['image'];
+                                            $date=date_create($rec['date']);
+                                            $date = date_format($date,"Y/m/d h:i A");
                                             echo "
                                             <div class='carousel-item ${active}'>
                                                 <img src='${image}' class='d-block w-100' alt=''>
                                                 <div>
-                                                <p><label>Date:</label> ${rec['date']}</p>
+                                                <p><label>Date:</label> ${date}</p>
                                                 <p><label>Title:</label> ${rec['title']}</p>
                                                 <p><label>Details:</label> ${rec['detail']}</p>
                                                 </div>
@@ -82,6 +91,7 @@ $announcements = $announcement->get_records();
                                                         <th>Date Sent</th>
                                                         <th>App No.</th>
                                                         <th>Status</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -95,6 +105,8 @@ $announcements = $announcement->get_records();
                                                             <td>${key['date']}</td>
                                                             <td>${key['appnum']}</td>
                                                             <td>${status}</td>
+                                                            <td><a href='/claim_stub.php?id=${key['id']}' target='_blank' 
+                                                            class='d-none d-sm-inline-block btn btn-sm btn btn-success'><i class='fas fa-print'></i></a></td>
                                                             </tr>";
                                                         }
                                                     ?>

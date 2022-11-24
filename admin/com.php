@@ -46,7 +46,7 @@ include ('topbar.php');
                                                     <td><?php echo $row['contact']; ?></td>
                                                     <td><?php echo $row['address']; ?></td>
                                                     <td>
-                                                        <a href="#=<?php echo $row['nowner'];?>" 
+                                                        <a href="/print.php?id=<?php echo $row['id'];?>" target="_blank" 
                                                         class="d-none d-sm-inline-block btn btn-sm btn btn-success"><i class="fas fa-print"></i> PRINT</a>
                                                        
                                                     </td>
