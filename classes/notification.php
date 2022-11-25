@@ -15,6 +15,10 @@
         public $date;
         public $obj_id;
 
+        public $limit = 5;
+
+        public $offset = 0;
+
         function get_records () {
             $db = new DB();
             $db->connect();
@@ -42,6 +46,10 @@
                 $sql = $sql . " and a.ref_id = ?";
                 $params[] = $this->ref_id;
             }
+
+            $sql = $sql. " order by id desc";
+
+            $sql = $sql . " limit " . $this->offset . $this->limit;
 
             if (count($params) > 0){
                 $stmt = $db->prepare($sql);

@@ -27,6 +27,7 @@ error_reporting(E_ALL);
     $area = $record->area;
     $contact = $record->contact;
     $email = $record->email;
+    $no_of_storey = $record->no_of_storey;
 
     $occupancy = "";
     $new_business = "";
@@ -253,7 +254,7 @@ error_reporting(E_ALL);
 
     <tr>
     <td class='border-left border-top'>TOTAL FLOOR AREA (M2):${area}</td>
-    <td class='border-left border-top'>NO. OF STOREY:</td>
+    <td class='border-left border-top'>NO. OF STOREY:${no_of_storey}</td>
     </tr>
 
     <tr>

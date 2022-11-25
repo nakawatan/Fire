@@ -101,12 +101,16 @@ $announcements = $announcement->get_records();
                                                             if ($key['status'] != ""){
                                                                 $status=$key['status'];
                                                             }
+                                                            $action = "";
+                                                            if ($key['status'] == "Compliant"){
+                                                                $action="<a href='/claim_stub.php?id=${key['id']}' target='_blank' 
+                                                                class='d-none d-sm-inline-block btn btn-sm btn btn-success'><i class='fas fa-print'></i></a>";
+                                                            }
                                                             echo "<tr>
                                                             <td>${key['date']}</td>
                                                             <td>${key['appnum']}</td>
                                                             <td>${status}</td>
-                                                            <td><a href='/claim_stub.php?id=${key['id']}' target='_blank' 
-                                                            class='d-none d-sm-inline-block btn btn-sm btn btn-success'><i class='fas fa-print'></i></a></td>
+                                                            <td>${action}</td>
                                                             </tr>";
                                                         }
                                                     ?>

@@ -94,9 +94,13 @@
                 }
                 $obj->ref_id = $_SESSION['id'];
                 $obj->type = $_SESSION['type'];
+                if (isset($_REQUEST['offset'])){
+                    $obj->offset = $_REQUEST['offset'] * $obj->limit;
+                }
 
                 $result["status"] = "ok";
                 $result['records'] = $obj->get_records();
+                $result['offset'] = $obj->offset;
                 $obj->set_viewed();
                 break;
 

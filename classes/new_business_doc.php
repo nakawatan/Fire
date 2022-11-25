@@ -202,11 +202,11 @@
                 move_uploaded_file($file_tmp,$filename);
             }
 
-            if(isset($_FILES['cof-insurance-input'])){
+            if(isset($_FILES['new-cof-insurance-input'])){
                 $errors= array();
-                $file_name = $_FILES['cof-insurance-input']['name'];
-                $file_size =$_FILES['cof-insurance-input']['size'];
-                $file_tmp =$_FILES['cof-insurance-input']['tmp_name'];
+                $file_name = $_FILES['new-cof-insurance-input']['name'];
+                $file_size =$_FILES['new-cof-insurance-input']['size'];
+                $file_tmp =$_FILES['new-cof-insurance-input']['tmp_name'];
                 
                 $root = dirname(__FILE__, 2);
                 $tempDir = $root."/upload/docs/";

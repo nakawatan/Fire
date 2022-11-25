@@ -31,17 +31,20 @@ include ('topbar.php');
                                         $i=1;
                                         if ($result) {
                                             while ($row = mysqli_fetch_assoc($result)) {
+
+                                                
     
                                                 $img=$row['image'];
                                                 $title=$row['title'];
                                                 $details=$row['detail'];
-                                                $date=$row['date'];
+                                                $date=date_create($row['date']);
+                                                $date = date_format($date,"Y/m/d h:i A");
                                                 ?>
                                                 <tr>
                                                     <td><img src="<?php echo "img/".$row['image'];?>" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"></td>
                                                     <td><?php echo $row['title']; ?></td>
                                                     <td><?php echo $row['detail']; ?></td>
-                                                    <td><?php echo $row['date']; ?></td>
+                                                    <td><?php echo $date ?></td>
                                                     <td><button type="button" class="btn btn-default btn-sm btn-flat border-info wave-effect text-info dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action</button>
                                                         <div class="dropdown-menu text-center">
                                                             <a href="anno-edit.php?updateid=<?php echo $row['id'];?>" 

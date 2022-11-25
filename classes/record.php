@@ -24,7 +24,7 @@
         public $client_id;
         public $amount;
         public $payment_review_date;
-        
+        public $no_of_storey;
         public $email;
 
         function get_records () {
@@ -136,6 +136,7 @@
                         $this->amount = $row['amount'];
                         $this->payment_review_date = $row['payment_review_date'];
                         $this->email = $row['email'];
+                        $this->no_of_storey = $row['no_of_storey'];
                     }
                 // close the result.
                 // mysqli_free_result($result);
@@ -236,10 +237,12 @@
                     date,
                     status,
                     type,
-                    client_id
+                    client_id,
+                    no_of_storey
                 )
             values
                 (
+                    ?,
                     ?,
                     ?,
                     ?,
@@ -255,7 +258,7 @@
                 )
             ;";
             $stmt = $db->db->prepare($sql);
-            $stmt->bind_param('ssssssssssii', $this->appnum,$this->nowner,$this->esname,$this->author,
+            $stmt->bind_param('ssssssssssiii', $this->appnum,$this->nowner,$this->esname,$this->author,
                 $this->address,
                 $this->bnature,
                 $this->area,
@@ -263,7 +266,8 @@
                 $this->date,
                 $this->status,
                 $this->type,
-                $this->client_id
+                $this->client_id,
+                $this->no_of_storey
                 );
 
             $stmt->execute();

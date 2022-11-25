@@ -23,6 +23,7 @@ if (isset($_POST['create'])) {
     $date=$_POST['date'];
     $type=$_POST['application-type-input'];
     $client_id = $_SESSION['id'];
+    $no_of_storey = $_REQUEST['no_of_storey'];
 
     $record->nowner = $nowner;
     $record->esname = $esname;
@@ -34,6 +35,7 @@ if (isset($_POST['create'])) {
     $record->date = $date;
     $record->type = $type;
     $record->client_id = $client_id;
+    $record->no_of_storey = $no_of_storey;
 
     $record->save();
 
@@ -54,7 +56,7 @@ if (isset($_POST['create'])) {
         $doc->UploadFile();
         $doc->save();
     }
-
+        echo "<script>alert('Successfully added new application request!');</script>";
         echo "<script>window.location.href='index.php'</script>";
     
     // $sql = "INSERT INTO `record`(`nowner`, `esname`, `autho`, `address`, `bnature`, `area`, `contact`, `date`) 
@@ -126,6 +128,10 @@ if (isset($_POST['create'])) {
                                             <input type="date" name="date" id="example-email2" name="example-email" class="form-control" required> 
                                         </div>
                                         <div class="form-group col-md-6 m-t-20">
+                                            <label>No. of Storey:</label>
+                                            <input type="text" name="no_of_storey" class="form-control form-control-line" required > 
+                                        </div>
+                                        <div class="form-group col-md-6 m-t-20">
                                             <label>Application Type:</label>
                                             <select id="application-type-input" name="application-type-input" class="form-control">
                                                 <option value="1">FSIC for Certicate of Occupancy</option>
@@ -193,7 +199,7 @@ if (isset($_POST['create'])) {
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
                                             <h4 class="small font-weight-bold">COPY OF FIRE INSURANCE (IF NECESSARY)</h4>
-                                            <input type="file" name="cof-insurance-input" class="form-control" value="" style="font-size: 13px;">
+                                            <input type="file" name="new-cof-insurance-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-actions col-md-12">
                                             <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-success" name="create">Submit</button>

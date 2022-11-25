@@ -25,7 +25,7 @@ if ($result) {
         $date=$row['date'];
 ?>
 <style>
-img{
+/* img{
     transition: transform .2s;
     width:250px;
     margin:0 auto;
@@ -35,7 +35,7 @@ img{
 }
 img:hover{
     transform:scale(2.5);
-}
+} */
 </style>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -199,6 +199,28 @@ img:hover{
                                 </div>
                             </div>
                         </div>
+                        <div class="modal fade" id="image-view-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="font-size: 15px;" id="exampleModalLabel">Add New Schedule</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <div class="col-lg-12"> 
+                                            <img width="100%" id="big-image"></img>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                             <?php
                                 }
                                 }
@@ -206,3 +228,10 @@ img:hover{
                             ?>
                              
 <?php include ('footer.php');?>
+
+<script>
+    $('.img').on('click',function(){
+        $('#big-image').attr('src',$(this).attr('src'));
+        $('#image-view-modal').modal('show');
+    });
+</script>

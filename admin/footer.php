@@ -142,7 +142,7 @@
             });
         }, 5000);
 
-        $('.notification-clicker').on('click',function(){
+        $('.show-more').on('click',function(){
             $.ajax({
                 url: '/api/',
                 data: {
@@ -151,10 +151,15 @@
                 method: 'POST',
                 dataType:"json",
                 success: function(response) {
-                    $('.notification-list').empty();
                     $.each(response.records,function(k,v){
+                        $viewed = "white";
+                        if (v.viewed == 0) {
+                            $viewed = "#e7e2e2";
+                        }
                         $('.notification-list').append(
-                            $("<a>").addClass('dropdown-item d-flex align-items-center').attr('href','#')
+                            $("<a>")
+                            .css('background',$viewed)
+                            .attr('data-id',v.obj_id).addClass('dropdown-item d-flex align-items-center my-notification').attr('href','#')
                             .append(
                                 $('<div>').addClass('mr-3')
                                 .append(
@@ -169,7 +174,51 @@
                                 )
                             )
                         )
-                    })
+                    });
+                    $('.my-notification').unbind().on('click',function(){
+                        window.location.href="re-view.php?updateid=" + $(this).attr('data-id');
+                    });
+                }
+            });
+        });
+
+        $('.notification-clicker').on('click',function(){
+            $.ajax({
+                url: '/api/',
+                data: {
+                    method:"get_notifications"
+                },
+                method: 'POST',
+                dataType:"json",
+                success: function(response) {
+                    $('.notification-list').empty();
+                    $.each(response.records,function(k,v){
+                        $viewed = "white";
+                        if (v.viewed == 0) {
+                            $viewed = "#e7e2e2";
+                        }
+                        $('.notification-list').append(
+                            $("<a>")
+                            .css('background',$viewed)
+                            .attr('data-id',v.obj_id).addClass('dropdown-item d-flex align-items-center my-notification').attr('href','#')
+                            .append(
+                                $('<div>').addClass('mr-3')
+                                .append(
+                                    $('<div>').addClass('icon-circle bg-primary')
+                                    .append(
+                                        $('<i>').addClass('fas fa-file-alt text-white')
+                                    )
+                                ),
+                                $('<div>').append(
+                                    $('<div>').addClass('small text-gray-500').text(v.date),
+                                    $('<div>').addClass('font-weight-bold').text(v.message)
+                                )
+                            )
+                        )
+                    });
+                    $('.my-notification').unbind().on('click',function(){
+                        window.location.href="re-view.php?updateid=" + $(this).attr('data-id');
+                    });
                 }
             });
         });
