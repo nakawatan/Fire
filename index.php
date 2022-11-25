@@ -18,7 +18,7 @@ $data = $record->get_records();
 $announcement = new Announcement();
 $announcements = $announcement->get_records();
 ?>
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+                
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
                 <!-- Begin Page Content -->

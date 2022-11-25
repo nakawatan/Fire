@@ -73,7 +73,7 @@ if (isset($_POST['create'])) {
     
 }
 ?>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
                 <!-- Begin Page Content -->
@@ -81,12 +81,12 @@ if (isset($_POST['create'])) {
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4" style="font-size: 13px;">
                         <div class="card-header py-3">
-                          <div class="pull-left m-0 font-weight-bold text-danger" style="text-align: center;">
+                          <div class="pull-left m-0 font-weight-bold text-danger">
                           FIRE SAFETY INSPECTION CERTIFICATE APPLICATION FORM</div>
                         </div>
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#details">Details</a></li>
-                            <li><a data-toggle="tab" href="#documents">Documents</a></li>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <a class="nav-link active" data-toggle="tab"  href="#details">Details</a>
+                            <a class="nav-link card-header" data-toggle="tab" href="#documents">Documents</a>
                         </ul>
                         <form method="post" enctype="multipart/form-data">
                             <div class="tab-content">
