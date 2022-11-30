@@ -53,7 +53,7 @@ $announcements = $announcement->get_records();
                                             echo "
                                             <div class='carousel-item ${active}'>
                                                 <img src='${image}' class='d-block w-100' alt=''>
-                                                <div class='carousel-caption d-none d-md-block'>
+                                                <div class='d-none d-md-block'>
                                                     <p><label>Date:</label> ${date}</p>
                                                     <p><label>Title:</label> ${rec['title']}</p>
                                                     <p><label>Details:</label> ${rec['detail']}</p>
