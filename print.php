@@ -575,7 +575,7 @@ error_reporting(E_ALL);
     </table>
     </br>
         <div style='text-align:center'>
-            <span style='background-color: grey;'>CLAIM STUB <label style='color:red;'>&#9654;</label></span>
+            <span style='background-color: grey;'>CLAIM STUB <label style='color:red;'></label></span>
         </div>
         <div>
         CERTIFIED BY:
