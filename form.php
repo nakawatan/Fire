@@ -85,8 +85,8 @@ if (isset($_POST['create'])) {
                           FIRE SAFETY INSPECTION CERTIFICATE APPLICATION FORM</div>
                         </div>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <a class="nav-link active" data-toggle="tab"  href="#details">Details</a>
-                            <a class="nav-link card-header" data-toggle="tab" href="#documents">Documents</a>
+                            <a class="nav-link active btn-tab-details" data-toggle="tab"  href="#details">Details</a>
+                            <a class="nav-link card-header btn-tab-documents" data-toggle="tab" href="#documents">Documents</a>
                         </ul>
                         <form method="post" enctype="multipart/form-data">
                             <div class="tab-content">
@@ -248,15 +248,15 @@ if (isset($_POST['create'])) {
     });
     $('.btnNext').click(function(){
         $active = $('.nav-tabs > .active');
-        $active.next('li').find('a').trigger('click');
-        $active.next('li').addClass('active');
+        $('.btn-tab-documents').click();
+        $('.btn-tab-documents').parent('li').addClass('active');
         $active.removeClass('active');
     });
 
     $('.btnPrevious').click(function(){
         $active = $('.nav-tabs > .active');
-        $active.prev('li').find('a').trigger('click');
-        $active.prev('li').addClass('active');
+        $('.btn-tab-details').click();
+        $('.btn-tab-details').parent('li').addClass('active');
         $active.removeClass('active');
     });
 </script>

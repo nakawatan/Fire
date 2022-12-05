@@ -9,7 +9,10 @@ include ('topbar.php');
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4" style="font-size: 15px;">
                         <div class="card-header py-3">
-                          <div class="pull-left m-0 font-weight-bold text-primary" style="font-size: 15px;">Compliant</div>
+                          <div class="pull-left m-0 font-weight-bold text-primary" style="font-size: 15px;">
+                              Compliant
+                              <a class='d-none d-sm-inline-block btn btn-sm btn btn-success' style='float: right;' target='_blank' href='/admin/print_list.php?status=Compliant'><i class="fas fa-print"></i> Print<a>
+                          </div>
                         </div>
                         
                         <div class="card-body">
