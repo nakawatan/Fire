@@ -58,22 +58,22 @@ include ('topbar.php');
                                                     <td><?php echo $status; ?></td>
                                                     <td><button type="button" class="btn btn-default btn-sm btn-flat border-info wave-effect text-info dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Action</button>
                                                         <div class="dropdown-menu text-center" style="padding: 10px;">
-                                                            <a href="staff-edit.php?updateid=<?php echo $row['nowner'];?>" 
+                                                            <!-- <a href="staff-edit.php?updateid=<?php echo $row['nowner'];?>" 
                                                             class="d-none d-sm-inline-block btn btn-sm text-white btn bg-success add-payment-btn" data-toggle="modal" 
-                                                            data-target="#Payment"><i class="fas fa-money-bill"></i></a>
+                                                            data-target="#Payment"><i class="fas fa-money-bill"></i></a> -->
 
-                                                            <a href="re-view.php?updateid=<?php echo $row['id'];?>" 
+                                                            <a title="View Request" href="re-view.php?updateid=<?php echo $row['id'];?>" 
                                                             class="d-none d-sm-inline-block btn btn-sm text-white btn bg-info"><i class="fas fa-eye"></i></a>
 
-                                                            <a href="staff-edit.php?updateid=<?php echo $row['nowner'];?>" 
+                                                            <!-- <a href="staff-edit.php?updateid=<?php echo $row['nowner'];?>" 
                                                             class="d-none d-sm-inline-block btn btn-sm text-white btn bg-secondary update-status-btn" data-toggle="modal" 
                                                             data-target="#Status"><i class="fas fa-lightbulb"></i></a>
 
                                                             <a href="staff-edit.php?updateid=<?php echo $row['nowner'];?>" 
                                                             class="d-none d-sm-inline-block btn btn-sm btn btn-warning update-appnum" data-toggle="modal" 
-                                                            data-target="#AppNumber"><i class="fas fa-pen-square"></i></a>
+                                                            data-target="#AppNumber"><i class="fas fa-pen-square"></i></a> -->
 
-                                                            <a href="#" 
+                                                            <a href="#" title="Delete Request"
                                                             class="d-none d-sm-inline-block btn btn-sm btn btn-danger delete-record"><i class="fas fa-trash-alt"></i></a>
                                                         </div>
                                                     </td>

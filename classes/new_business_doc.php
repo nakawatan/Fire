@@ -4,6 +4,8 @@
     error_reporting(E_ALL);
     $root = dirname(__FILE__, 2);
     include_once $root.'/db/database.php';
+    include_once $root.'/classes/notification.php';
+    include_once $root.'/classes/record.php';
 
     class NewBusinessDoc {
 
@@ -12,6 +14,10 @@
         public $business_permit_fee;
         public $appidavit_of_undertaking;
         public $fire_insurance;
+        public $certificate_of_occupancy_status;
+        public $business_permit_fee_status;
+        public $appidavit_of_undertaking_status;
+        public $fire_insurance_status;
         public $record_id;
 
         function get_records () {
@@ -102,11 +108,60 @@
                         $this->business_permit_fee = $row['business_permit_fee'];
                         $this->appidavit_of_undertaking = $row['appidavit_of_undertaking'];
                         $this->fire_insurance = $row['fire_insurance'];
+                        $this->certificate_of_occupancy_status = $row['certificate_of_occupancy_status'];
+                        $this->business_permit_fee_status = $row['business_permit_fee_status'];
+                        $this->appidavit_of_undertaking_status = $row['appidavit_of_undertaking_status'];
+                        $this->fire_insurance_status = $row['fire_insurance_status'];
                         $this->record_id = $row['record_id'];
                     }
                 // close the result.
                 // mysqli_free_result($result);
             }
+        }
+
+        function update_doc_status($name,$status){
+            $db = new DB();
+            $db->connect();
+
+            $sql = "
+            update `new_business_doc` 
+                SET ${name} = ?
+                WHERE id = ?
+            ;";
+            
+            $stmt = $db->db->prepare($sql);
+            $stmt->bind_param('ii',$status,$this->id);
+
+            $stmt->execute();
+
+            $stmt->close();
+
+            $db->close();
+
+            $filename = array();
+            $filename['business_permit_fee_status'] = "ASSESSMENT OF THE BUSINESS PERMIT FEE/TAX ASSESSMENT BILL FROM BPLO";
+            $filename['fire_insurance_status'] = "COPY OF FIRE INSURANCE";
+            $filename['fsmr_status'] = "ONE (1) SET OF FIRE SAFETY MAINTENANCE REPORT (FSMR)";
+            $filename['fire_safety_clearance_status'] = "FIRE SAFETY CLEARANCE FOR WELDING, CUTTING AND OTHER HOT WORK OPERATIONS";
+            $filename['certificate_of_occupancy_status'] = "CERTIFIED TRUE COPY OF VALID CERTIFICATE OF OCCUPANCY";
+            $filename['business_permit_fee_status'] = "ASSESSMENT OF BUSINESS PERMIT FEE/ TAX ASSESSMENT BILL FROM BPLO";
+            $filename['appidavit_of_undertaking_status'] = "AFFIDAVIT OF UNDERTAKING THAT THERE WAS NO SUBSTANTIAL CHANGES MADE ON BUILDING/ESTABLISHMENT";
+            $filename['fire_insurance_status'] = "COPY OF FIRE INSURANCE";
+            $filename['obo_endoursement_status'] = "ENDORSEMENT FROM OFFICE OF THE BUILDING OFFICIAL";
+            $filename['certificate_of_completion_status'] = "CERTIFICATE OF COMPLETION";
+            $filename['assessment_fee_status'] = "CERTIFIED TRUE COPY OF ASSESSMENT FEE FOR SECURING CERTIFICATE OF OCCUPANCY FROM OBO";
+            $filename['as_built_plan_status'] = "AS-BUILT PLAN";
+            $filename['fsccr_status'] = "ONE (1) SET OF FIRE SAFETY COMPLIANCE AND COMMISSIONING REPORT (FSCCR)";
+        
+            
+            $status_str = "approved";
+            if ($status == 0){
+            $status_str = "declined";
+            }
+
+            $message = $filename[$name] . " is " .$status_str;
+
+            $this->addNotification($message);
         }
 
         function Save(){
@@ -215,6 +270,21 @@
     
                 move_uploaded_file($file_tmp,$filename);
             }
+        }
+
+        function addNotification($message) {
+            $this->get_record();
+            $record = new Record();
+            $record->id = $this->record_id;
+            $record->get_record();
+            $notification = new Notification();
+            $notification->type=2;
+            $notification->ref_id = $record->client_id;
+            
+            $notification->obj_id = $this->id;
+            $notification->viewed=0;
+            $notification->message = $message;
+            $notification->save();
         }
     }
 ?>

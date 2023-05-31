@@ -7,24 +7,24 @@
     include_once $root.'/classes/notification.php';
     include_once $root.'/classes/record.php';
 
-    class RenewalBusinessDoc {
+    class NewBusinessDoc {
 
         public $id;
+        public $certificate_of_occupancy;
         public $business_permit_fee;
+        public $appidavit_of_undertaking;
         public $fire_insurance;
-        public $fsmr;
-        public $fire_safety_clearance;
+        public $certificate_of_occupancy_status;
         public $business_permit_fee_status;
+        public $appidavit_of_undertaking_status;
         public $fire_insurance_status;
-        public $fsmr_status;
-        public $fire_safety_clearance_status;
         public $record_id;
 
         function get_records () {
             $db = new DB();
             $db->connect();
 
-            $sql = "SELECT a.* FROM `renewal_documents` as a 
+            $sql = "SELECT a.* FROM `new_business_doc` as a 
                 where a.id > 0";
 
             $types = "";
@@ -81,7 +81,7 @@
             $db = new DB();
             $db->connect();
 
-            $sql = "SELECT a.* FROM `renewal_documents` as a 
+            $sql = "SELECT a.* FROM `new_business_doc` as a 
             where a.id = ?";
 
             $stmt = $db->prepare($sql);
@@ -104,13 +104,13 @@
                     {
                         $row = $result->fetch_assoc();
                         $this->id = $row['id'];
-                        $this->fsmr = $row['fsmr'];
+                        $this->certificate_of_occupancy = $row['certificate_of_occupancy'];
                         $this->business_permit_fee = $row['business_permit_fee'];
-                        $this->fire_safety_clearance = $row['fire_safety_clearance'];
+                        $this->appidavit_of_undertaking = $row['appidavit_of_undertaking'];
                         $this->fire_insurance = $row['fire_insurance'];
-                        $this->fsmr_status = $row['fsmr_status'];
+                        $this->certificate_of_occupancy_status = $row['certificate_of_occupancy_status'];
                         $this->business_permit_fee_status = $row['business_permit_fee_status'];
-                        $this->fire_safety_clearance_status = $row['fire_safety_clearance_status'];
+                        $this->appidavit_of_undertaking_status = $row['appidavit_of_undertaking_status'];
                         $this->fire_insurance_status = $row['fire_insurance_status'];
                         $this->record_id = $row['record_id'];
                     }
@@ -124,10 +124,11 @@
             $db->connect();
 
             $sql = "
-            update `renewal_documents` 
+            update `new_business_doc` 
                 SET ${name} = ?
                 WHERE id = ?
             ;";
+            
             $stmt = $db->db->prepare($sql);
             $stmt->bind_param('ii',$status,$this->id);
 
@@ -136,28 +137,30 @@
             $stmt->close();
 
             $db->close();
-
-            $filename = array();
-            $filename['business_permit_fee_status'] = "ASSESSMENT OF THE BUSINESS PERMIT FEE/TAX ASSESSMENT BILL FROM BPLO";
-            $filename['fire_insurance_status'] = "COPY OF FIRE INSURANCE";
-            $filename['fsmr_status'] = "ONE (1) SET OF FIRE SAFETY MAINTENANCE REPORT (FSMR)";
-            $filename['fire_safety_clearance_status'] = "FIRE SAFETY CLEARANCE FOR WELDING, CUTTING AND OTHER HOT WORK OPERATIONS";
-            $filename['certificate_of_occupancy_status'] = "CERTIFIED TRUE COPY OF VALID CERTIFICATE OF OCCUPANCY";
-            $filename['business_permit_fee_status'] = "ASSESSMENT OF BUSINESS PERMIT FEE/ TAX ASSESSMENT BILL FROM BPLO";
-            $filename['appidavit_of_undertaking_status'] = "AFFIDAVIT OF UNDERTAKING THAT THERE WAS NO SUBSTANTIAL CHANGES MADE ON BUILDING/ESTABLISHMENT";
-            $filename['fire_insurance_status'] = "COPY OF FIRE INSURANCE";
-            $filename['obo_endoursement_status'] = "ENDORSEMENT FROM OFFICE OF THE BUILDING OFFICIAL";
-            $filename['certificate_of_completion_status'] = "CERTIFICATE OF COMPLETION";
-            $filename['assessment_fee_status'] = "CERTIFIED TRUE COPY OF ASSESSMENT FEE FOR SECURING CERTIFICATE OF OCCUPANCY FROM OBO";
-            $filename['as_built_plan_status'] = "AS-BUILT PLAN";
-            $filename['fsccr_status'] = "ONE (1) SET OF FIRE SAFETY COMPLIANCE AND COMMISSIONING REPORT (FSCCR)";
-
+            
+            $file = "";
+            if ($name == "obo_endoursement_status") {
+                $file = "ENDORSEMENT FROM OFFICE OF THE BUILDING OFFICIAL";
+            }
+            if ($name == "certificate_of_completion_status") {
+                $file = "CERTIFICATE OF COMPLETION";
+            }
+            if ($name == "assessment_fee_status") {
+                $file = "CERTIFIED TRUE COPY OF ASSESSMENT FEE FOR SECURING CERTIFICATE OF OCCUPANCY FROM OBO";
+            }
+            if ($name == "as_built_plan_status") {
+                $file = "AS-BUILT PLAN";
+            }
+            if ($name == "fsccr_status") {
+                $file = "ONE (1) SET OF FIRE SAFETY COMPLIANCE AND COMMISSIONING REPORT (FSCCR)";
+            }
+            
             $status_str = "approved";
             if ($status == 0){
             $status_str = "declined";
             }
 
-            $message = $filename[$name] . " is " .$status_str;
+            $message = $file . " is " .$status_str;
             $this->addNotification($message);
         }
 
@@ -166,12 +169,12 @@
             $db->connect();
 
             $sql = "
-            insert into `renewal_documents` 
+            insert into `new_business_doc` 
                 (
+                    certificate_of_occupancy,
                     business_permit_fee,
+                    appidavit_of_undertaking,
                     fire_insurance,
-                    fsmr,
-                    fire_safety_clearance,
                     record_id
                 )
             values
@@ -184,7 +187,7 @@
                 )
             ;";
             $stmt = $db->db->prepare($sql);
-            $stmt->bind_param('ssssi', $this->business_permit_fee,$this->fire_insurance,$this->fsmr,$this->fire_safety_clearance,
+            $stmt->bind_param('ssssi', $this->certificate_of_occupancy,$this->business_permit_fee,$this->appidavit_of_undertaking,$this->fire_insurance,
                 $this->record_id
                 );
 
@@ -201,7 +204,7 @@
             $db->connect();
             
             $sql = "
-            delete from `renewal_documents` where id = ?
+            delete from `new_business_doc` where id = ?
             ;";
             $stmt = $db->prepare($sql);
             $stmt->bind_param('i', $this->id);
@@ -212,14 +215,26 @@
 
             $db->close();
         }
-
         function UploadFile() {
             $t=time();
-            if(isset($_FILES['business-permit-input'])){
+            if(isset($_FILES['coo-input'])){
                 $errors= array();
-                $file_name = $_FILES['business-permit-input']['name'];
-                $file_size =$_FILES['business-permit-input']['size'];
-                $file_tmp =$_FILES['business-permit-input']['tmp_name'];
+                $file_name = $_FILES['coo-input']['name'];
+                $file_size =$_FILES['coo-input']['size'];
+                $file_tmp =$_FILES['coo-input']['tmp_name'];
+                
+                $root = dirname(__FILE__, 2);
+                $tempDir = $root."/upload/docs/";
+                $filename=$tempDir.$t.$file_name;
+                $this->certificate_of_occupancy="/upload/docs/".$t.$file_name;
+    
+                move_uploaded_file($file_tmp,$filename);
+            }
+            if(isset($_FILES['bus-permit-fee-input'])){
+                $errors= array();
+                $file_name = $_FILES['bus-permit-fee-input']['name'];
+                $file_size =$_FILES['bus-permit-fee-input']['size'];
+                $file_tmp =$_FILES['bus-permit-fee-input']['tmp_name'];
                 
                 $root = dirname(__FILE__, 2);
                 $tempDir = $root."/upload/docs/";
@@ -228,43 +243,30 @@
     
                 move_uploaded_file($file_tmp,$filename);
             }
-            if(isset($_FILES['cof-insurance-input'])){
+            if(isset($_FILES['appidavit-of-undertaking-input'])){
                 $errors= array();
-                $file_name = $_FILES['cof-insurance-input']['name'];
-                $file_size =$_FILES['cof-insurance-input']['size'];
-                $file_tmp =$_FILES['cof-insurance-input']['tmp_name'];
+                $file_name = $_FILES['appidavit-of-undertaking-input']['name'];
+                $file_size =$_FILES['appidavit-of-undertaking-input']['size'];
+                $file_tmp =$_FILES['appidavit-of-undertaking-input']['tmp_name'];
+                
+                $root = dirname(__FILE__, 2);
+                $tempDir = $root."/upload/docs/";
+                $filename=$tempDir.$t.$file_name;
+                $this->appidavit_of_undertaking="/upload/docs/".$t.$file_name;
+    
+                move_uploaded_file($file_tmp,$filename);
+            }
+
+            if(isset($_FILES['new-cof-insurance-input'])){
+                $errors= array();
+                $file_name = $_FILES['new-cof-insurance-input']['name'];
+                $file_size =$_FILES['new-cof-insurance-input']['size'];
+                $file_tmp =$_FILES['new-cof-insurance-input']['tmp_name'];
                 
                 $root = dirname(__FILE__, 2);
                 $tempDir = $root."/upload/docs/";
                 $filename=$tempDir.$t.$file_name;
                 $this->fire_insurance="/upload/docs/".$t.$file_name;
-    
-                move_uploaded_file($file_tmp,$filename);
-            }
-            if(isset($_FILES['fsmr-input'])){
-                $errors= array();
-                $file_name = $_FILES['fsmr-input']['name'];
-                $file_size =$_FILES['fsmr-input']['size'];
-                $file_tmp =$_FILES['fsmr-input']['tmp_name'];
-                
-                $root = dirname(__FILE__, 2);
-                $tempDir = $root."/upload/docs/";
-                $filename=$tempDir.$t.$file_name;
-                $this->fsmr="/upload/docs/".$t.$file_name;
-    
-                move_uploaded_file($file_tmp,$filename);
-            }
-
-            if(isset($_FILES['fscfw-input'])){
-                $errors= array();
-                $file_name = $_FILES['fscfw-input']['name'];
-                $file_size =$_FILES['fscfw-input']['size'];
-                $file_tmp =$_FILES['fscfw-input']['tmp_name'];
-                
-                $root = dirname(__FILE__, 2);
-                $tempDir = $root."/upload/docs/";
-                $filename=$tempDir.$t.$file_name;
-                $this->fire_safety_clearance="/upload/docs/".$t.$file_name;
     
                 move_uploaded_file($file_tmp,$filename);
             }

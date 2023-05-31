@@ -4,11 +4,11 @@ include ('header.php');
 include ('sidebar.php');
 include ('topbar.php');
 $root = dirname(__FILE__, 2);
-include_once $root.'/classes/new_business_doc.php';
-include_once $root.'/classes/renewal_business_doc.php';
-include_once $root.'/classes/occupancy_docs.php';
+include_once 'classes/new_business_doc.php';
+include_once 'classes/renewal_business_doc.php';
+include_once 'classes/occupancy_docs.php';
                                         
-$id = $_REQUEST['updateid'];
+$id = $_REQUEST['id'];
 $sql = "SELECT * FROM `record` where id = ".$id." ORDER BY id DESC";
 $result = mysqli_query($con,$sql);
 $i=1;
@@ -412,14 +412,14 @@ img:hover{
                                 </div>
                                 <?php } ?>
 
-                                <div class="form-group col-md-20 m-t-20">
+                                <!-- <div class="form-group col-md-20 m-t-20">
                                     <a href="request.php"><button type="button" class="float-right d-none d-sm-inline-block btn btn-sm btn-danger">
                                     Back</button></a>
                                     <?php if ($can_proceed) { 
                                         $data = json_encode($row); ?>
                                         <a href="#"><button type="button" class="float-right d-none d-sm-inline-block btn btn-sm btn-success proceed-btn" data-attr-appnum="<?php echo $appnum; ?>" data-attr-details='<?php echo $data; ?>'>Proceed</button></a>
                                     <?php } ?>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="modal fade" id="image-view-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -554,7 +554,7 @@ img:hover{
             method: 'POST',
             dataType:"json",
             success: function(response) {
-                // window.location.reload();
+                window.location.reload();
             }
         });
     });

@@ -197,11 +197,15 @@ error_reporting(E_ALL);
             <td width='10%'><img src='${base64}' width='100px'></img></td>
             <td width='60%' css='text-align: center;'>
                 <div class='center'>
-                        <p style='font-size:40px'>BUREAU OF FIRE PROTECTION</p>
-                        <p>Region)</p>
-                        <p>(District/Provincial Office)</p>
-                        <p>(Station)</p>
-                        <p>(Station Address)</p>
+                        <p>Republic of the Philippines</p>
+                        <p>Department of the Interior and Local Government</p>
+                        <p style='font-size:20px'>BUREAU OF FIRE PROTECTION</p>
+                        <p>Region 4A (CALABARZON)</p>
+                        <p>Batangas Province</p>
+                        <p>Mabini Fire Station</p>
+                        <p>Poblacion Mabini Batangas</p>
+                        <p>(043) 425-3890</p>
+                        <p>416mabinifirestation@gmail.com</p>
                 </div>
             </td>
             <td width='10%'>

@@ -8,6 +8,9 @@
     include $root.'/classes/record.php';
     include $root.'/classes/user.php';
     include $root.'/classes/scheduler.php';
+    include $root.'/classes/new_business_doc.php';
+    include $root.'/classes/occupancy_docs.php';
+    include $root.'/classes/renewal_business_doc.php';
     $result["status"] = "ok";
 
     if (isset($_REQUEST['method'])){
@@ -135,10 +138,21 @@
                 if (isset ($_REQUEST['status'])) {
                     $obj->status = $_REQUEST['status'];
                 }
+                $exist = false;
                 if (isset ($_REQUEST['app_num'])) {
                     $obj->appnum = $_REQUEST['app_num'];
+                    $newObj = new Record();
+                    $newObj->appnum = $_REQUEST['app_num'];
+                    $newObj->appnum_exist();
+                    if($newObj->id > 0){
+                        $exist = true;
+                        $result['status'] = "error";
+                        $result['msg'] = "App Number already exist";
+                    }
                 }
-                $obj->update();
+                if (!$exist){
+                    $obj->update();
+                }
                 break;
 
             case "add_payment":
@@ -207,6 +221,22 @@
                     $user->Update();
                     unset($_SESSION);
                 }
+                break;
+
+            case "update_new_business_doc_status":
+                $obj = new NewBusinessDoc();
+                $obj->id = $_REQUEST['id'];
+                $obj->update_doc_status($_REQUEST['field'],$_REQUEST['status']);
+                break;
+            case "update_occupancy_doc_status":
+                $obj = new OccupancyDocs();
+                $obj->id = $_REQUEST['id'];
+                $obj->update_doc_status($_REQUEST['field'],$_REQUEST['status']);
+                break;
+            case "update_renewal_doc_status":
+                $obj = new RenewalBusinessDoc();
+                $obj->id = $_REQUEST['id'];
+                $obj->update_doc_status($_REQUEST['field'],$_REQUEST['status']);
                 break;
 
             default:

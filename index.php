@@ -26,7 +26,7 @@ $announcements = $announcement->get_records();
                    
                     <div class="row">
                         
-                        <div class="col-xl-8 col-lg-7">
+                        <div class="col-xl-4 col-lg-7">
                             <div class="card shadow mb-4" style="height:100%">
                                 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
@@ -75,7 +75,7 @@ $announcements = $announcement->get_records();
                         </div>
 
                         
-                        <div class="col-xl-4 col-lg-5">
+                        <div class="col-xl-8 col-lg-5">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary">Request</h6>
@@ -104,6 +104,11 @@ $announcements = $announcement->get_records();
                                                             if ($key['status'] == "Compliant"){
                                                                 $action="<a href='/claim_stub.php?id=${key['id']}' target='_blank' 
                                                                 class='d-none d-sm-inline-block btn btn-sm btn btn-success'><i class='fas fa-print'></i></a>";
+                                                            }
+
+                                                            if ($key['status'] == "Non Compliant"){
+                                                                $action="<a href='/re-view.php?id=${key['id']}' 
+                                                                class='d-none d-sm-inline-block btn btn-sm btn btn-info'><i class='fas fa-eye'></i></a>";
                                                             }
                                                             echo "<tr>
                                                             <td>${key['date']}</td>

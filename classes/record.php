@@ -281,6 +281,31 @@
 
         }
 
+        function appnum_exist(){
+            $db = new DB();
+            $db->connect();
+
+            $sql = "SELECT * FROM record where appnum = ?;";
+
+            $stmt = $db->prepare($sql);
+            $stmt->bind_param('s', $this->appnum);
+
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+            $db->close();
+            // return $result;
+            if ($result)
+            {
+                // it return number of rows in the table.
+                if ($result->num_rows > 0)
+                    {
+                        $row = $result->fetch_assoc();
+                        $this->id = $row['id'];
+                    }
+            }
+        }
+
         function Update(){
 
             $db = new DB();

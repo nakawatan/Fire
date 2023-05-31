@@ -73,6 +73,12 @@ if (isset($_POST['create'])) {
     
 }
 ?>
+<style>
+    .mb-limit {
+        color: #d30d0d;
+        font-size: 8px;
+    }
+</style>
 
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -155,23 +161,33 @@ if (isset($_POST['create'])) {
                                     <!-- occupancy -->
                                     <div class="card-body" id="application-type-1">
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">ENDORSEMENT FROM OFFICE OF THE BUILDING OFFICIAL (OBO)</h4>
+                                            <h4 class="small font-weight-bold">ENDORSEMENT FROM OFFICE OF THE BUILDING OFFICIAL (OBO)
+                                                <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="obo-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">CERTIFICATE OF COMPLETION </h4>
+                                            <h4 class="small font-weight-bold">CERTIFICATE OF COMPLETION 
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="coc-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">CERTIFIED TRUE COPY OF ASSESSMENT FEE FOR SECURING CERTIFICATE OF OCCUPANCY FROM OBO</h4>
+                                            <h4 class="small font-weight-bold">CERTIFIED TRUE COPY OF ASSESSMENT FEE FOR SECURING CERTIFICATE OF OCCUPANCY FROM OBO
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="cto-sc-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">AS-BUILT PLAN (IF NECESSARY)</h4>
+                                            <h4 class="small font-weight-bold">AS-BUILT PLAN (IF NECESSARY)
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="as-built-plan-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">ONE (1) SET OF FIRE SAFETY COMPLIANCE AND COMMISSIONING REPORT (FSCCR) (IF NECESSARY)</h4>
+                                            <h4 class="small font-weight-bold">ONE (1) SET OF FIRE SAFETY COMPLIANCE AND COMMISSIONING REPORT (FSCCR) (IF NECESSARY)
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="fsccr-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-actions col-md-12">
@@ -186,19 +202,27 @@ if (isset($_POST['create'])) {
                                     <!-- new business -->
                                     <div class="card-body" id="application-type-2" style="display:none">
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">CERTIFIED TRUE COPY OF VALID CERTIFICATE OF OCCUPANCY</h4>
+                                            <h4 class="small font-weight-bold">CERTIFIED TRUE COPY OF VALID CERTIFICATE OF OCCUPANCY
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="coo-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">ASSESSMENT OF BUSINESS PERMIT FEE/ TAX ASSESSMENT BILL FROM BPLO</h4>
+                                            <h4 class="small font-weight-bold">ASSESSMENT OF BUSINESS PERMIT FEE/ TAX ASSESSMENT BILL FROM BPLO
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="bus-permit-fee-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">AFFIDAVIT OF UNDERTAKING THAT THERE WAS NO SUBSTANTIAL CHANGES MADE ON BUILDING/ESTABLISHMENT</h4>
+                                            <h4 class="small font-weight-bold">AFFIDAVIT OF UNDERTAKING THAT THERE WAS NO SUBSTANTIAL CHANGES MADE ON BUILDING/ESTABLISHMENT
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="appidavit-of-undertaking-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">COPY OF FIRE INSURANCE (IF NECESSARY)</h4>
+                                            <h4 class="small font-weight-bold">COPY OF FIRE INSURANCE (IF NECESSARY)
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="new-cof-insurance-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-actions col-md-12">
@@ -213,19 +237,27 @@ if (isset($_POST['create'])) {
                                     <!-- renew business -->
                                     <div class="card-body" id="application-type-3" style="display:none">
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">ASSESSMENT OF THE BUSINESS PERMIT FEE/TAX ASSESSMENT BILL FROM BPLO</h4>
+                                            <h4 class="small font-weight-bold">ASSESSMENT OF THE BUSINESS PERMIT FEE/TAX ASSESSMENT BILL FROM BPLO
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="business-permit-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">COPY OF FIRE INSURANCE (IF NECESSARY)</h4>
+                                            <h4 class="small font-weight-bold">COPY OF FIRE INSURANCE (IF NECESSARY)
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="cof-insurance-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">ONE (1) SET OF FIRE SAFETY MAINTENANCE REPORT (FSMR) (IF  NECESSARY)</h4>
+                                            <h4 class="small font-weight-bold">ONE (1) SET OF FIRE SAFETY MAINTENANCE REPORT (FSMR) (IF  NECESSARY)
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="fsmr-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-group col-md-20 m-t-20">
-                                            <h4 class="small font-weight-bold">FIRE SAFETY CLEARANCE FOR WELDING, CUTTING AND OTHER HOT WORK OPERATIONS (IF REQUIRED)</h4>
+                                            <h4 class="small font-weight-bold">FIRE SAFETY CLEARANCE FOR WELDING, CUTTING AND OTHER HOT WORK OPERATIONS (IF REQUIRED)
+                                            <label class="mb-limit">(Max File Size: 5MB)</label>
+                                            </h4>
                                             <input type="file" name="fscfw-input" class="form-control" value="" style="font-size: 13px;">
                                         </div>
                                         <div class="form-actions col-md-12">
@@ -259,4 +291,19 @@ if (isset($_POST['create'])) {
         $('.btn-tab-details').parent('li').addClass('active');
         $active.removeClass('active');
     });
+
+    $('[type="file"]').on('change',function(){
+        var input = $(this)[0];
+        if (!input.files) { // This is VERY unlikely, browser support is near-universal
+            console.error("This browser doesn't seem to support the `files` property of file inputs.");
+        } else if (!input.files[0]) {
+            addPara("Please select a file before clicking 'Load'");
+        } else {
+            var file = input.files[0];
+            if ((file.size/1000)/1000 > 5){
+                alert("Max file size limit is 5mb");
+                $(this).val('');
+            }
+        }
+    })
 </script>
